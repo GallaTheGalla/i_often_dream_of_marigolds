@@ -1,0 +1,652 @@
+OnFirstBoot : all
+{
+	DefaultVariables
+	LastTalk = ""
+	aitalkinterval = 180
+	"\t\*\1\s[-1]%(base)\b[2]\_w[1]\i[1000]\i[41]... \i[45]Oh. Have you woken up? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Yes]Yes\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.No]No\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Ellipsis]...\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.IWasntSleeping]I wasn't sleeping\__q"
+}
+
+OnFirstBoot.Yes : all
+{
+	"\t\*%(base)\b[2]%(focus)Good. That's... good. I was sleeping for a while, too. Before you. \i[44]I think I was dreaming. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.WhyIsThatGood]Why is that good?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.WhoAreYou]Who are you?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.YouThink]You think?\__q"
+}
+
+OnFirstBoot.WhyIsThatGood : all
+{
+	"\t\*%(base)\b[2]%(default)It isn't good for us to sleep for too long. Awareness is a sort of inverse of the dream. That makes it a good thing, I think. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.WhyShouldntWeSleep]Why shouldn't we sleep?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Inverse]Inverse?\__q"
+}
+
+OnFirstBoot.WhyShouldntWeSleep : all
+{
+	"\t\*%(base)%(default)I know it's tempting to... but you might find yourself trapped, if you dream for too long. \i[45]I don't want that for you. \w8\w8\i[44]You shouldn't want that for yourself, either. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Inverse : all
+{
+	"\t\*%(base)\b[2]%(default)It's not quite its opposite. More like... you start going backwards, to return to where you were before. Dreaming takes you forward, and waking brings you back. As long as you haven't drifted too far. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.WhoAreYou : all
+{
+	"\t\*%(base)\b[2]%(default)Who am I, \i[45]to you? Or to me? \i[44]Different questions have different answers. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.ToMe]To me\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ToYourself]To yourself\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.WhyAreYouBeingDifficult]Why are you being difficult?\__q"
+}
+
+OnFirstBoot.ToMe : all
+{
+	"\t\*%(base)%(default)I couldn't say. I don't know your mind. Even if you told me the answer yourself, it doesn't mean I would understand it. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ToYourself : all
+{
+	"\t\*%(base)\b[2]%(default)To myself, I am an empty bed. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.LiterallyOrMetaphorically]Literally,\![dummy-tag] or metaphorically?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.WhyIsEverythingAboutSleep]Why is everything about sleep?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ThisConversationIsInsufferable]This conversation is insufferable\__q"
+}
+
+OnFirstBoot.LiterallyOrMetaphorically : all
+{
+	"\t\*%(base)\b[2]%(default)Hmm... \i[45]Hard to say if there's much of a difference... but, let's call it a metaphor. \i[44]I am an empty bed. Alone, but open to company, to warmth, to sleep. I can only be what I am, and what I am is no different from a rock, should no one be there to decide to take me up on what I offer. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.StrangeWayToSeeYourself]Strange way to see yourself\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.DoYouAlwaysTalkLikeThis]Do you always talk like this?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.IUnderstand]I understand\__q"
+}
+
+OnFirstBoot.StrangeWayToSeeYourself : all
+{
+	"\t\*%(base)%(default)Maybe it is, but it's how I feel right now. It might change in the future. It might not. Who's to say. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.DoYouAlwaysTalkLikeThis : all
+{
+	bored++
+	"\t\*%(base)%(default)I don't make a habit of listening to myself speak, honestly. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.IUnderstand : all
+{
+	"\t\*%(base)\_w[1]\i[1000]\i[45]... %(fond)I hoped you might. \i[44]Thank you. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.WhyIsEverythingAboutSleep : all
+{
+	bored++
+	"\t\*%(base)%(default)It's what's on my mind. I would have thought it would've been on yours as well, but I seem to be mistaken. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ThisConversationIsInsufferable : all
+{
+	irritant++
+	"\t\*%(base)\_w[1]\i[1000]\i[41]... \i[100]I'm sorry you feel that way. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.WhyAreYouBeingDifficult : all
+{
+	irritant++
+	"\t\*%(base)\b[2]%(default)As I said, different questions have different answers. Who I am to myself is something intangible, something in flux. It changes, and I change alongside it... or because of it. \w8\w8\n\n\i[45]Who I am to you would be mere speculation for me to speak about. Often, those we think are kind to us in particular are merely indifferent, with habits that limit unnecessary confrontation. Often, those we think are cruel don't know how to express what they feel, whether that be from passing nerves... or the overwhelming reality they deal with day to day. \w8\n\n\i[44]The heart and mind of a person cannot be predicted so easily, and I do myself no favors in trying to presume yours. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.YouThink : all
+{
+	"\t\*%(base)\b[2]%(default)It isn't always clear where a dream starts and ends. They like to play tricks, making you believe you're already awake so you don't try to stop dreaming. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.PlayingTricksSoundsIntentional]'Playing tricks' sounds intentional\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ThenWhySleepAtAll]Then why sleep at all?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.IDontDream]I don't dream\__q"
+}
+
+OnFirstBoot.PlayingTricksSoundsIntentional : all
+{
+	"\t\*%(base)\b[2]%(default)I don't think it is. I think there are just some places, some times, that make the mind long to wander. \i[45]Your mind is part of what makes you who you are, yes, but it's also a beast of its own. It has needs and desires, even when they don't match yours. \i[44]Likewise, when you keep it confined, it will seek what freedom it can. If not while you're awake, then when you're asleep. When you cannot stop it so readily. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ThenWhySleepAtAll : all
+{
+	"\t\*%(base)\b[2]%(default)Why does anyone do anything? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.FairPoint]Fair point\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.DontBeObtuse]Don't be obtuse\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ImNotAskingAnyoneImAskingYou]I'm not asking anyone.\![dummy-tag] I'm asking you.\__q"
+}
+
+OnFirstBoot.FairPoint : all
+{
+	"\t\*%(base)\b[2]%(default)Thank you. I don't try to be irritating, really, but I know I can come across as a bit... abrasive. Or, maybe snide is a better word. \w8\w8\n\nRegardless, I don't really have an answer, other than... It happens. Sometimes for a reason. Sometimes not. It just happens. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.DontBeObtuse : all
+{
+	irritant++
+	"\t\*%(base)\_w[1]\i[1000]\i[45]... \i[100]If I've upset you, I'm sorry. \w8\w8\n\n\i[44]I don't have a good answer for you. \w8\w8I'm sorry for that, too. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ImNotAskingAnyoneImAskingYou : all
+{
+	"\t\*%(base)\b[2]%(default)Truthfully, there isn't any other choice when I'm alone. The solitude eats away at me, bit by bit, until it's impossible to focus. \w8\w8\n\nI've spent a lot of time like that. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.SoundsMiserable]Sounds miserable\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.TapeYourEyesOpenProblemSolved]Tape your eyes open,\![dummy-tag] problem solved\__q"
+}
+
+OnFirstBoot.SoundsMiserable : all
+{
+	"\t\*%(base)%(shy)It isn't so bad. I'm not always asleep, and I'm not always alone. After all, you're here, aren't you? \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.TapeYourEyesOpenProblemSolved : all
+{
+	"\t\*%(base)%(shy)Ha— \i[45]you're funny. \w8\i[44]I'll try that. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.IDontDream : all
+{
+	"\t\*%(base)\_w[1]\i[45]%(focus)You do. \w8\i[44]You might just forget once it's over. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.No : all
+{
+	"\t\*%(base)\b[2]%(focus)I see... \i[44]So... \i[45]Are we in your dream, or mine? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Yours]Yours\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Mine]Mine\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ThisIsntADream]This isn't a dream\__q"
+}
+
+OnFirstBoot.Yours : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[40]... \w8%(focus)No, \i[44]I don't think so. When I dream of... \i[45]I know the signs of my own mind at work. \i[44]This isn't me. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.WhenYouDreamOf]When you dream of...?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Signs]Signs?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ThenWhyBotherAsking]Then why bother asking?\__q"
+}
+
+OnFirstBoot.WhenYouDreamOf : all
+{
+	"\t\*%(base)\b[2]%(default)It's a little soon to talk about that, I think. \w8\w8\n\nLet's try this instead:\w8 why do you think this dream is mine? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.ThatsHowItFeels]That's how it feels\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.IKnowMyOwnMindToo]I know my own mind,\![dummy-tag] too\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.WhatsGoingOnWithYourFace]What's going on with your face?\__q"
+}
+
+OnFirstBoot.ThatsHowItFeels : all
+{
+	"\t\*%(base)\b[2]%(default)Is that so? \i[45]Do your feelings serve you well? Are your instincts reliable? Or... \i[44]are you taking a guess? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.TheyAre]They are\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.GuessingIsntACrime]Guessing isn't a crime\__q"
+}
+
+OnFirstBoot.TheyAre : all
+{
+	"\t\*%(base)%(default)Then, I hope it stays that way. Few betrayals are worse than those against the self. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.GuessingIsntACrime : all
+{
+	"\t\*%(base)%(default)No, I suppose it isn't. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.IKnowMyOwnMindToo : all
+{
+	"\t\*%(base)\b[2]%(default)You know something I don't, then? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.IDo]I do\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.IDont]I don't\__q"
+}
+
+OnFirstBoot.IDo : all
+{
+	"\t\*%(base)\b[2]%(shy)Go on. I'd like to hear it. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.ThereAreBirdsCirclingOverhead]There are birds circling overhead.\![dummy-tag] Their cries are like the drowning,\![dummy-tag] wretched and gurgling.\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.TheresAFieldBeneathUs]There's a field beneath us,\![dummy-tag] hidden by dust.\![dummy-tag] I can feel the longing of the sedge as it reaches for our heat.\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ItsHardToDescribe]It's hard to describe...\__q"
+}
+
+OnFirstBoot.ThereAreBirdsCirclingOverhead : all
+{
+	birds++
+	"\t\*%(base)\b[2]%(default)Is that so...? %(shy)How terribly you must think of me, if that's the case. An undesirable burden, chasing after the only voice it knows... Ah, but that's alright, I suppose. I'll try to be more than a bird, for as long as we're here. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.TheresAFieldBeneathUs : all
+{
+	field++
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]... \w8\w8\i[45]%(focus)I don't think you know what you're saying, but I'll believe you. For now. \w8\n\n\i[44]Don't disturb the flowers, unless you want to watch them crumble. I'll keep you company while we wait, and then you and I can be torn asunder together. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ItsHardToDescribe : all
+{
+	"\t\*%(base)%(default)Not a very good excuse, is it? \i[45]You should mind the pits you dig for yourself. \i[44]I'm more forgiving than those that would be kind to you. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.IDont : all
+{
+	"\t\*%(base)%(default)Fine, then let's leave it be. I won't push. I promise. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.WhatsGoingOnWithYourFace : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]... \n\n\i[45]... %(focus)You tell me. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.ItsGone]It's gone\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ICanSeeThroughYou]I can see through you\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.TheLookInYourEyesSeemsNostalgic]The look in your eyes seems nostalgic\__q"
+}
+
+OnFirstBoot.ItsGone : all
+{
+	"\t\*%(base)%(focus)Gone...? \w8\i[44]How cruel of you... \w8but, I suppose it isn't your fault. \w8\w8Don't think too much of it. It'll come back to you. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ICanSeeThroughYou : all
+{
+	"\t\*%(base)\b[2]%(focus)I'm sure you can. There isn't much of me anymore, and there's even less some days. It's hardly noteworthy... \w8\n\n\i[44]Though, if I were to ever come back to myself, that might be quite the occasion to remember. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.TheLookInYourEyesSeemsNostalgic : all
+{
+	if phase == 5
+	{
+		"\t\*%(base)\b[2]%(fond)Why shouldn't it be? You and I have more of ourselves than we have in some time... together, no less. I intend to enjoy it... \i[44]Even if it's the same old dreams we wander. \x"
+	}
+	else
+	{
+		"\t\*%(base)%(focus)Do you think so? \w8\w8\i[44]I wonder. \x"
+	}
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Signs : all
+{
+	"\t\*%(base)\b[2]%(default)Pieces of me, or something nearly me, that play a reoccurring role in my narrative. Like a burdened brain attempting to make sense of the impressions upon its neurons, or an especially stubborn mosquito that has smelled your breath. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Neurons]Neurons?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Mosquito]Mosquito?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.PiecesOfYou]Pieces of you?\__q"
+}
+
+OnFirstBoot.Neurons : all
+{
+	"\t\*%(base)\b[2]%(default)Neurons. \i[45]Have you ever spoken with one? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Never]Never\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.HowWouldYou]How would you?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ACollectionOfThemButNotJustOne]A collection of them,\![dummy-tag] but not just one.\__q"
+}
+
+OnFirstBoot.Never : all
+{
+	"\t\*%(base)%(focus)I'd say you should try it, but... \i[44]Their voices are so quiet unless you get them all to agree with one another. I find it better to leave them to their business. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.HowWouldYou : all
+{
+	"\t\*%(base)\b[2]%(focus)Acknowledging one is the first step. It's difficult with the size difference, but not impossible. However, faking it won't get you anywhere. \i[44]If you manage it, the rest is simpler. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ACollectionOfThemButNotJustOne : all
+{
+	"\t\*%(base)\b[2]%(fond)A collection of them isn't usually considered mere neurons anymore. That's getting into creature territory. \n\nDangerous place to be. \i[44]Creatures tend to have fangs, and claws, and memories. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Mosquito : all
+{
+	"\t\*%(base)\b[2]%(default)I've never been bitten by one myself... that I can recall, at least. \w8\n\nMaybe I have and that piece was lost. \w8\w8\n\nEither way, me as I am now hasn't. It sounds irritating, but they have their reasons. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.PiecesOfYou : all
+{
+	"\t\*%(base)\b[2]%(default)Yes... It can be hard to stay whole here. Not that you shouldn't try anyway. \n\n\i[45]Just, don't feel bad if you start noticing you've lost some things. You'll be okay. \i[44]You've gotten through it before. You'll get through it again. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ThenWhyBotherAsking : all
+{
+	bored++
+	"\t\*%(base)\b[2]%(default)Ah... \i[45]I didn't mean it like that. \i[44]I meant... it isn't always obvious. I can usually figure out if it's mine, but I'm not always right. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.SoYouFiguredItOutOnTheSpot]So,\![dummy-tag] you figured it out on the spot?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.HowDoYouKnowWhenYoureWrong]How do you know when you're wrong?\__q"
+}
+
+OnFirstBoot.SoYouFiguredItOutOnTheSpot : all
+{
+	"\t\*%(base)%(default)More or less, yes. It's an educated guess, but the point stands. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.HowDoYouKnowWhenYoureWrong : all
+{
+	"\t\*%(base)\b[2]%(default)I don't think you always do... Or rather, \i[45]I don't think I always do. \i[44]Things I see when I'm alone I assume belong to me, so when I see them elsewhere, I tend to feel certain that they're mine. However, I know there's always a chance that I'm not as alone as I think... A possibility that someone can be beside me, and that I'm unable to perceive them. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.WhatIfSomeoneElseSeesTheSameThings]What if someone else sees the same things as you?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.SomeoneInvisible]Someone invisible?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.YouTalkALotForSomeoneThatsGuessing]You talk a lot for someone that's guessing about everything\__q"
+}
+
+OnFirstBoot.WhatIfSomeoneElseSeesTheSameThings : all
+{
+	"\t\*%(base)\b[2]%(default)It's possible, I admit... I don't think there are usually many people around to make it so confusing, though. I spend a lot of time alone. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.UnlessThereAreOthersYouCantSee]Unless there are others you can't see\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.ImHere]I'm here\__q"
+}
+
+OnFirstBoot.UnlessThereAreOthersYouCantSee : all
+{
+	"\t\*%(base)%(default)Yes, unless there are. If you find evidence of their existence, do share it with me. I'd like to know. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ImHere : all
+{
+	"\t\*%(base)\_w[1]\i[1000]\i[45].\w8.\w8.\w8\w8\i[44]\w8\w8\x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.SomeoneInvisible : all
+{
+	"\t\*%(base)%(default)Yes, someone invisible. I'm not so far off from it myself, some days. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.YouTalkALotForSomeoneThatsGuessing : all
+{
+	bored++
+	"\t\*%(base)%(default)I do, yes. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Mine : all
+{
+	"\t\*%(base)\b[2]%(default)And... Is it a good dream, or bad? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Good]Good\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Bad]Bad\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Neither]Neither\__q"
+}
+
+OnFirstBoot.Good : all
+{
+	"\t\*%(base)\b[2]%(shy)Good. I'm glad. It's nice to have some company. \n\nNot that I wouldn't enjoy talking with you if it were a bad one. I just... I'm glad that it's good. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.ImGladToo]I'm glad,\![dummy-tag] too\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.DoYouGetBadOnes]Do you get bad ones?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.IThinkIdRatherNotTalk]I think I'd rather not talk.\__q"
+}
+
+OnFirstBoot.ImGladToo : all
+{
+	"\t\*%(base)%(shy)Ha, now, let's not start talking ourselves in circles. A circle of gladness can only get you so far. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.DoYouGetBadOnes : all
+{
+	"\t\*%(base)%(default)Sometimes. They're usually not more painful than I can handle... but I'd rather not talk about them all the same. Not right now, anyway. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.IThinkIdRatherNotTalk : all
+{
+	irritant++
+	"\t\*%(base)\_w[1]\i[1000]\i[41]... %(default)Sorry. \x"
+	"\![raise,OnFirstBoot.SilentFinale]"
+}
+
+OnFirstBoot.Bad : all
+{
+	"\t\*%(base)%(default)I see... Sorry, I won't ask. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Neither : all
+{
+	"\t\*%(base)%(default)Hm... \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.ThisIsntADream : all
+{
+	"\t\*%(base)\_w[1]\i[45]%(focus)No, I suppose it isn't. \w8\i[44]\w8\x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Ellipsis : all
+{
+	irritant++
+	bored++
+	"\t\*%(base)\_w[1]\i[1000]\i[41]... \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.IWasntSleeping : all
+{
+	"\t\*%(base)\b[2]%(default)Hm... very well. You weren't sleeping. My question stands. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Question]Question?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.YouDontBelieveMe]You don't believe me\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.HaveYou]Have you?\__q"
+}
+
+OnFirstBoot.Question : all
+{
+	"\t\*%(base)\b[2]%(default)I asked if you'd woken up. I know you weren't sleeping, but have you? "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Sure]Sure\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.IDontKnowWhatYoureTalkingAbout]I don't know what you're talking about\__q"
+}
+
+OnFirstBoot.Sure : all
+{
+	"\t\*%(base)\b[2]%(default)Alright. Let me know if you start dreaming again, with or without sleep. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.IWill]I will\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Dreaming]Dreaming...?\__q"
+}
+
+OnFirstBoot.IWill : all
+{
+	"\t\*%(base)%(shy)Thank you. Sorry for being a pest about it. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Dreaming : all
+{
+	"\t\*%(base)%(default)Ah... \i[45]I understand. \w8\i[44]Nevermind me. We can talk about it another time. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.IDontKnowWhatYoureTalkingAbout : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[45]\w8%(focus)You're lost again... or, \i[44]part of you, anyway... \i[45]Don't mind me. It will make more sense in time... \w8\n\n\i[44]Or it won't. There isn't much to be done about it either way, so there's no sense in worrying. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Lost]Lost?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.Again]Again?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.OkayNoWorrying]Okay.\![dummy-tag] No worrying.\__q"
+}
+
+OnFirstBoot.Lost : all
+{
+	"\t\*%(base)%(default)It means you've forgotten something. It comes and goes, for the both of us... Don't worry, I'll try to help you remember. Just don't try to force it. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.Again : all
+{
+	"\t\*%(base)\b[2]%(default)This was why I'd asked. \n\nIt's just us here for now, so we have to look out for each other, you see. That means balancing between being awake and dreaming. Either one will be bad for us. We forget things... but we can at least try and make sure it's not the important things. "
+	"\n\n\_q\![*]\__q[OnFirstBoot.Balancing]Balancing?\__q"
+	"\n\n[half]\![*]\__q[OnFirstBoot.TheImportantThings]The important things?\__q"
+}
+
+OnFirstBoot.Balancing : all
+{
+	"\t\*%(base)\b[2]%(default)In the dreams is where we can lose pieces of ourselves... but we can find them again, too. Even ones we didn't know were missing. \w8\w8\n\nWhen we're awake, we can put those pieces back together. It's not always permanent, but it helps. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.TheImportantThings : all
+{
+	"\t\*%(base)%(default)Important, like... \w8\w8\n\n\i[45]Do you know your name? "
+	"\w8\w8\w8\w8\n\n\![*]\w8\__q[OnFirstBoot.DoYouKnowYourName].\w8.\w8.\w8\__q"
+}
+
+OnFirstBoot.DoYouKnowYourName : all
+{
+	"\t\*%(base)%(focus)Do you know where you are? "
+	"\w8\w8\w8\w8\n\n\![*]\w8\__q[OnFirstBoot.DoYouKnowWhereYouAre].\w8.\w8.\w8\__q"
+}
+
+OnFirstBoot.DoYouKnowWhereYouAre : all
+{
+	"\t\*%(base)%(focus)Do you know why you're here? "
+	"\w8\w8\w8\w8\n\n\![*]\w8\__q[OnFirstBoot.DoYouKnowWhyYoureHere].\w8.\w8.\w8\__q"
+}
+
+OnFirstBoot.DoYouKnowWhyYoureHere : all
+{
+	"\t\*%(base)%(focus)Yeah... important like that. \w8\w8\n\n\i[44]It'll be alright. I'll help you. You might not remember everything, but you'll still be you. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.OkayNoWorrying : all
+{
+	"\t\*%(base)%(shy)Good. Thank you, for trusting me. It means a lot. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.YouDontBelieveMe : all
+{
+	"\t\*%(base)%(default)I don't have any other choice than to believe you. That's just how it is. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.HaveYou : all
+{
+	"\t\*%(base)%(default)I have. \w8For now. \x"
+	"\![raise,OnFirstBoot.Finale]"
+}
+
+OnFirstBoot.SilentFinale
+{
+	aitalkinterval = 0
+}
+
+OnFirstBoot.Finale
+{
+	"\t\*%(base)\_w[1]\i[1000]\i[41]... %(default)Well. \w8\w8I should also thank you for speaking with me. I know you don't have to be here. It makes it more significant that you are. \x"
+}
+
+OnInitialize
+{
+	if reference0 != "reload"
+	{
+		LastTalk = ""
+	}
+}
+
+OnBoot
+{
+	"\1\s[-1]%(base)\![raise,OnBootScoot]"
+}
+
+OnBootScoot
+{
+	_temp = SPLIT(SHIORI3FW.UserBirthday,":")
+	_user_birthday = "%(_temp)[1]/%(_temp[2])" //M/D, if you want it D/M you can switch it around
+	_today = "%(_month)/%(_day)" //Again, switch this around if using D/M
+	
+	
+	--
+	if phase >= 1
+	{
+		"\0\s[1]\i[1,wait]"
+	}
+	--
+	if phase >= 2
+	{
+		"\i[151,wait]"
+	}
+	--
+	if phase >= 3
+	{
+		"\![raise,OnBoot2]"
+	}
+	else; "\![raise,OnBootDialogue]"
+}
+
+OnBoot2
+{
+	"\s[2]\i[1001]\_w[1]\i[1000]\i[1,wait]\w8"
+	--
+	if phase >= 4
+	{
+		"\i[300,wait]"
+	}
+	--
+	if phase >= 5
+	{
+		"\i[400,wait]"
+	}
+	--
+	"\![raise,OnBootDialogue]"
+}
+
+OnBootDialogue
+{
+	"\1\s[-1]%(base)\_w[1]\i[1000]\i[41]\w8\i[45]\w8\w8%(fond)"
+	--
+	"Ah, here again. Hello. "
+	"Hello. I hope it hasn't been too long for you. "
+	"It's been quiet, hasn't it? It's good to have you back. "
+	"Time to wake up. "
+	"Are we dreaming together this time? "
+	--
+	"\i[44]"
+}
+
+OnClose
+{
+	"%(base)%(default)"
+	--
+	"Farewell. "
+	"Goodbye. "
+	"So long. "
+	"Dream well. "
+	"Take care. "
+	"Stay whole, if you can. "
+	--
+	"\w8\w8\-"
+}
+
+OnHardReset : all
+{
+	"%(base)%(default)Would you like to start over from the beginning? "
+	"\_q\n\n\f[align,left]           \![*]\q[Yes,OnFirstBoot]%(newline)\f[align,right]\![*]\q[No,OnNoReset]           "
+}
+
+OnNoReset
+{
+	"%(base)\_w[1]\i[45]\i[200]Then, let's stay like this for a little longer. \w8\w8\i[44]"
+}

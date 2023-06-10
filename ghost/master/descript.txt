@@ -1,0 +1,20 @@
+charset,UTF-8
+
+name,I Often Dream Of Marigolds
+type,ghost
+
+shiori,yaya.dll
+
+craftman,Galla
+craftmanw,Galla
+craftmanurl,https://GallaTheGalla.github.io/gtg-ghosts/
+homeurl,https://raw.githubusercontent.com/GallaTheGalla/i_often_dream_of_marigolds/main/
+
+sakura.name,Visitor
+kero.name,
+
+icon,icon.ico
+balloon,Fading Like A Dream
+
+sstp.allowunspecifiedsend,0
+kero.seriko.defaultsurface,9

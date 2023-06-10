@@ -1,0 +1,31 @@
+charset,UTF-8
+type,shell
+
+name,Default Shell
+craftman,Galla
+craftmanw,Galla
+craftmanurl,https://GallaTheGalla.github.io/gtg-ghosts/
+
+seriko.alignmenttodesktop,free
+seriko.use_self_alpha,1
+
+menu.background.font.color.r,240
+menu.background.font.color.g,240
+menu.background.font.color.b,240
+
+menu.foreground.font.color.r,255
+menu.foreground.font.color.g,166
+menu.foreground.font.color.b,006
+
+menu.separator.color.r,017
+menu.separator.color.g,020
+menu.separator.color.b,031
+
+menu.background.alignment,righttop
+menu.foreground.alignment,righttop
+menu.sidebar.alignment,bottom
+menu.sidebar.alignment,bottom + repeat-y
+
+menu.background.bitmap.filename,menu_background.png
+menu.foreground.bitmap.filename,menu_foreground.png
+menu.sidebar.bitmap.filename,menu_sidebar.png

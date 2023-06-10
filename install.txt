@@ -1,0 +1,6 @@
+charset,UTF-8
+type,ghost
+
+name,I Often Dream Of Marigolds
+directory,i_often_dream_of_marigolds
+balloon.directory,fading_like_a_dream

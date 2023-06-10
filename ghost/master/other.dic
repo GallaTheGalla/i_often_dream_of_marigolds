@@ -1,0 +1,243 @@
+DefaultVariables
+{
+	beach = 0
+	birds = 0
+	bored = 0
+	box = 0
+	chats = 0
+	field = 0
+	forest = 0
+	irritant = 0
+	phase = 0
+}
+
+newline
+{
+    "\n \n[-100]"
+}
+
+On_homeurl
+{
+	"https://raw.githubusercontent.com/GallaTheGalla/i_often_dream_of_marigolds/main/"
+}
+
+FormatLinks : all
+{
+    for _i = 0; _i < ARRAYSIZE(_argv); _i++
+    {
+        _argv[_i]
+        if _i % 2 == 1; "%ASC(2)"
+        else; "%ASC(1)"
+    }
+}
+
+On_sakura.recommendsites
+{
+    FormatLinks(recommendsites_sakura)
+}
+
+recommendsites_sakura : array
+{
+    "Galla's Ghosts";    "https://gallathegalla.github.io/gtg-ghosts/"
+    "Ghost Masquerade 5 Afterword";    "http://earlduant.blog.fc2.com/blog-entry-876.html"
+}
+
+OnTranslate
+{
+	_talk = reference0
+	
+	//This is what makes %(embedded_elements) work in script input
+	if reference1 == "" && reference2 == "" //If this is from the input box
+	{ //send input box : no event (ref2) , no special flag (ref1)
+		_talk = EVAL('"' + REPLACE(_talk,'"','""') + '"')
+	}
+	
+	if phase == 4
+	{
+		_talk = REPLACE(_talk,"\i[40]","\i[30]")
+		_talk = REPLACE(_talk,"\i[41]","\i[31]")
+		_talk = REPLACE(_talk,"\i[44]","\i[34]")
+		_talk = REPLACE(_talk,"\i[45]","\i[35]")
+	}
+	elseif phase < 4
+	{
+		_talk = REPLACE(_talk,"\i[40]","")
+		_talk = REPLACE(_talk,"\i[41]","")
+		_talk = REPLACE(_talk,"\i[44]","")
+		_talk = REPLACE(_talk,"\i[45]","")
+	}
+	if phase < 2
+	{
+		_talk = REPLACE(_talk,"\i[100]","")
+		_talk = REPLACE(_talk,"\i[1000]","")
+		_talk = REPLACE(_talk,"\i[200]","")
+	}
+	
+	_talk = OnTranslateInternal.AutoPauses(_talk)
+	TOSTR(_talk)
+}
+
+OnTranslateInternal.AutoPauses
+{
+	_talk = _argv[0]
+	
+	if "\![no-autopause]" !_in_ _talk
+	{
+		_talk = REPLACE(_talk,"... ",".\w4.\w4.\w8 ") //Ellipsis
+		_talk = REPLACE(_talk,"..? ",".\w4.\w4?\w8 ") //Question mark + ellipsis
+		_talk = REPLACE(_talk,"..! ",".\w4.\w4!\w8 ") //Exclamation point + ellipsis
+		_talk = REPLACE(_talk,", ",",\w4 ") //Comma
+		_talk = REPLACE(_talk,". ",".\w8 ") //Period
+		_talk = REPLACE(_talk,"? ","?\w8 ") //Question mark
+		_talk = REPLACE(_talk,"! ","!\w8 ") //Exclamation point
+		_talk = REPLACE(_talk,"— ","—\w8 ") //Dash
+		_talk = REPLACE(_talk,"; ",";\w4 ") //Semicolon
+	}
+	
+	_talk
+}
+
+OnAnchorSelect
+{
+	if "http://" _in_ reference0 || "https://" _in_ reference0; "\j[""%(reference0)""]"
+}
+
+OnKeyPress
+{
+	if reference0 == "f1"; "\![open,readme]"
+	elseif reference0 == "t"; OnAiTalk
+	elseif reference0 == "r"; OnLastTalk
+}
+
+OnSurfaceRestore
+{
+	"\1\s[-1]\0"
+	--
+	"%(base)\_w[1]\i[1000]\i[41]"
+}
+
+OnWindowStateRestore
+{
+	OnSurfaceRestore
+}
+
+shy
+{
+	switch phase
+	{
+		"\0\s[0]"
+		"\0\s[1]"
+		"\_w[1]\i[200]"
+		"\_w[1]\i[200]"
+		"\_w[1]\i[200]\i[31]"
+		"\_w[1]\i[200]\i[41]"
+	}
+}
+
+fond
+{
+	switch phase
+	{
+		"\0\s[0]"
+		"\0\s[1]"
+		"\_w[1]\i[200]"
+		"\_w[1]\i[200]"
+		"\_w[1]\i[200]\i[30]"
+		"\_w[1]\i[200]\i[40]"
+	}
+}
+
+default
+{
+	switch phase
+	{
+		"\0\s[0]"
+		"\0\s[1]"
+		"\_w[1]\i[100]"
+		"\_w[1]\i[100]"
+		"\_w[1]\i[100]\i[31]"
+		"\_w[1]\i[100]\i[41]"
+	}
+}
+
+focus
+{
+	switch phase
+	{
+		"\0\s[0]"
+		"\0\s[1]"
+		"\_w[1]\i[100]"
+		"\_w[1]\i[100]"
+		"\_w[1]\i[100]\i[30]"
+		"\_w[1]\i[100]\i[40]"
+	}
+}
+
+base
+{
+	switch phase
+	{
+		"\0\s[0]"
+		"\0\s[1]"
+		"\0\s[1]"
+		"\0\s[2]"
+		"\0\s[2]"
+		"\0\s[2]"
+	}
+}
+
+//—————————————————————————————— User pronoun related ——————————————————————————————
+
+they
+{
+	if SHIORI3FW.UserSex == "male"; "he"
+	elseif SHIORI3FW.UserSex == "female"; "she"
+	else; "they"
+}
+
+them
+{
+	if SHIORI3FW.UserSex == "male"; "him"
+	elseif SHIORI3FW.UserSex == "female"; "her"
+	else; "them"
+}
+
+their
+{
+	if SHIORI3FW.UserSex == "male"; "his"
+	elseif SHIORI3FW.UserSex == "female"; "her"
+	else; "their"
+}
+
+theirs
+{
+	if SHIORI3FW.UserSex == "male"; "his"
+	elseif SHIORI3FW.UserSex == "female"; "hers"
+	else; "theirs"
+}
+
+themself
+{
+	if SHIORI3FW.UserSex == "male"; "himself"
+	elseif SHIORI3FW.UserSex == "female"; "herself"
+	else; "themself"
+}
+
+//%(they) %(p('are','is'))
+p
+{
+	if SHIORI3FW.UserSex == "undef"; _argv[0] //they are
+	else; _argv[1] //he is/she is
+}
+
+OnNotifyUserInfo : void
+{
+	SHIORI3FW.UserName = reference[0]
+	username = reference[0]
+	SHIORI3FW.UserNameFull = reference[1]
+	SHIORI3FW.UserBirthday = SPLIT(reference[2],',',3)
+	for _i = 0 ; _i < 3 ; _i++ {
+		SHIORI3FW.UserBirthday[_i] = TOINT(SHIORI3FW.UserBirthday[_i])
+	}
+	SHIORI3FW.UserSex = reference[3]
+}

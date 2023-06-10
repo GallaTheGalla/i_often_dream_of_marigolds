@@ -1,0 +1,6 @@
+.gitattributes,nonar,noupdate
+README.md,nonar,noupdate
+ghost/master/profile/,nonar,noupdate
+ghost/master/yaya_variable.cfg,nonar,noupdate
+shell/master/profile/,nonar,noupdate
+shell/master/surface.pdn,nonar,noupdate

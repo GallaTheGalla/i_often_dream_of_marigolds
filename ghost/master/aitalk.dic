@@ -1,0 +1,897 @@
+OnAiTalk
+{
+    if phase == 0 && chats >= 2
+    {
+        OnPhase1.CanYouHearThat
+        return
+    }
+    elseif phase == 1 && chats >= 4
+    {
+        OnPhase2.WhereAreWeToYou
+        return
+    }
+	elseif phase == 2 && chats >= 6
+    {
+        OnPhase3.FindingStrayPieces
+        return
+    }
+	elseif phase == 3 && chats >= 8
+    {
+        OnPhase4.WhatYourDreamsAreTellingYou
+        return
+    }
+	elseif phase == 4 && chats >= 10
+    {
+        OnPhase5.MayIAskYouSomething
+        return
+    }
+	elseif CHAIN.IDName == ""
+    {
+        LastTalk = RandomTalk
+    }
+    else
+    {
+        LastTalk = ChainTalk
+    }
+    LastTalk
+}
+
+OnPhase1.CanYouHearThat : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]... \w8\w8%(default)Can you hear that? "
+	"\n\n\_q\![*]\__q[OnPhase1.WhatIsIt]What is it?\__q"
+	"\n\n[half]\![*]\__q[OnPhase1.IDontHearAnything]I don't hear anything\__q"
+	"\n\n[half]\![*]\__q[OnPhase1.ItSoundsFarAway]Yeah.\![dummy-tag] It sounds far away.\__q"
+}
+
+OnPhase1.WhatIsIt : all
+{
+	"\t\*%(base)\b[2]%(default)It's familiar... \w8A voice, I think. I haven't heard it in... \w8\w8\w8\w8Oh. "
+	"\n\n\_q\![*]\__q[OnPhase1.AVoice]A voice?\__q"
+	"\n\n[half]\![*]\__q[OnPhase1.IDontRecognizeIt]I don't recognize it\__q"
+	"\n\n[half]\![*]\__q[OnPhase1.MyVoice]Oh?\__q"
+}
+
+OnPhase1.AVoice : all
+{
+	"\t\*%(base)\b[2]%(default)A voice without a body to occupy. \i[45]They drift, now and then, wandering for reasons only they can know. \i[44]You'll get used to hearing them pass by... \w8Though admittedly, they can be unsettling to see. "
+	"\n\n\_q\![*]\__q[OnPhase1.DriftWhere]Drift where?\__q"
+	"\n\n[half]\![*]\__q[OnPhase1.YouCanSeeThem]You can see them?\__q"
+}
+
+OnPhase1.DriftWhere : all
+{
+	"\t\*%(base)\b[2]%(default)Wherever they'd like, I imagine. Some are searching for the rest of their pieces, so that they may wake and become whole again... Or, something nearly whole, at any rate. \w8\w8\n\nOthers revel in their freedom, now that physical limitations have been stripped away. They might stay that way forever. They might not. Their decisions are their own now, and whoever they used to be no longer has a say. "
+	"\n\n\_q\![*]\__q[OnPhase1.MyVoice]Then do you know what kind this one is?\__q"
+}
+
+OnPhase1.YouCanSeeThem : all
+{
+	"\t\*%(base)\b[2]%(default)When they're close enough, you can. It's sort of... like watching the wind, if the wind had a hue. \w8\w8You can feel them, too, but that's a sensation much more difficult to put into words. \w8\w8\n\nMost I've met were warm to the touch, but not all of them. \w8Sometimes, their touch comes alongside an emotion. \i[45]When that happens, it will try to pull the same out of you. \w8\w8You're best keeping your distance from those, \i[44]unless you're certain it's something you don't mind losing. "
+	"\n\n\_q\![*]\__q[OnPhase1.MyVoice]Are we close enough to tell what this one is like?\__q"
+}
+
+OnPhase1.IDontRecognizeIt : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]\w8\i[45]\w8You don't? \w8\w8No\w8, I suppose you wouldn't. \i[44]It's been so long that I... \w8\w8 Well. \w8We should leave it be. It sounds like it's doing fine, out there on its own. "
+	"\n\n\_q\![*]\__q[OnPhase1.MyVoice]What do you know about it?\__q"
+	"\n\n[half]\![*]\__q[OnPhase1.AreYouAlright]Are you alright?\__q"
+}
+
+OnPhase1.AreYouAlright : all
+{
+	"\t\*%(base)\b[2]%(default)What? \w8... Oh, yes. \w8\w8Yes. I'm sorry, I'm fine. I was lost in my own thoughts for a moment there, that's all. It's nothing to worry over. \w8\w8\w8It's just... "
+	"\n\n\_q\![*]\__q[OnPhase1.MyVoice]What's wrong?\__q"
+}
+
+OnPhase1.IDontHearAnything : all
+{
+	"\t\*%(base)\b[2]%(default)If you can't hear it, \i[45]then try reaching for it, just at the edges. \w8Not too deeply. You don't want it to call for you, not when you're trying to get a sense of it... \w8\w8\n\nThere. \w8Can you feel it? "
+	"\n\n\_q\![*]\__q[OnPhase1.MyVoice]I can,\![dummy-tag] but isn't that...?\__q"
+}
+
+OnPhase1.ItSoundsFarAway : all
+{
+	"\t\*%(base)\b[2]%(default)The sound carries \i[45]when they sing. That's all this one is. The song. \i[44]The melody, the harmony, freed from the confines of the rest of its ties. It doesn't remember how to whisper, or shout, or scream... because those things aren't part of it anymore. "
+	"\n\n\_q\![*]\__q[OnPhase1.MyVoice]Have you met before?\__q"
+}
+
+OnPhase1.MyVoice : all
+{
+	"\t\*%(base)\_w[1]\i[1000]\i[41]\w8\w8... %(default)It's mine. \w8\w8\i[45]That's my voice. \w8\w8\i[44]My song. "
+	"\w8\n\n\![*]\w8\__q[OnPhase1.Confession].\w8.\w8.\w8?\w8\__q"
+}
+
+OnPhase1.Confession : all
+{
+	phase = 1
+	"\t\*\0\s[0]\b[2]\_w[1]\i[1000]\i[41]... \w8\w8\i[45]\i[100]A long time ago, there was... someone I admired. They kept me company here, and \i[44]I... \i[200]I would sing for them, in this strange place where enmity forms the mountainside and euphoria paints the reeds. \w8\n\n\i[100]\w8\s[1]\i[1]\i[45]It was the least that I could do, after everything they had done for me. So I sang, when words weren't enough. I sang to them as they dreamt, and... \i[200]I think they did the same for me, once in a while... \x"
+	"\t\*%(base)\b[2]%(focus)But... we cannot stay whole here. That isn't how it works. No matter how hard you try, eventually the dreams will come. When they do, the parts of you that you were holding so tightly to... \w8\w8\n\n%(fond)They take the opportunity, and they leave. \x"
+	"\t\*%(base)\b[2]%(focus)That's what happened, all those eons ago. \w8\n\n\i[44]That person I cared for, they slept. They dreamt. And... \w8\w8the piece of themselves that they lost, it was the part that remembered my songs. \w8\w8\w8\w8\n\nI was afraid to sing, after that. We carried on with that part of my voice locked away, forgotten. \w8\w8Too painful to approach. \w8\w8\n\nSo, \w8eventually, \w8the dreams took my song from me and set it free. \x"
+	"\t\*%(base)%(shy)I think it's happier now. \w8\w8\n\n%(default)I'm happy for it, too. \x"
+}
+
+OnPhase2.WhereAreWeToYou : all
+{
+	"\t\*%(base)\b[2]%(default)Say... I'd like to ask you something, if it's no trouble. \w8\w8\w8\n\nWhere are we to you? What is it that you see around us when we're together? "
+	"\n\n\_q\![*]\__q[OnPhase2.WereBetweenTerrains]We're between terrains.\![dummy-tag] At my back stands a forest;\![dummy-tag] looming,\![dummy-tag] ancient,\![dummy-tag] tired,\![dummy-tag] and green.\![dummy-tag] It holds me here not by force,\![dummy-tag] but by gentle guidance and my own unwillingness to disappoint.\![dummy-tag] At yours is a meadow;\![dummy-tag] vast,\![dummy-tag] shadowed,\![dummy-tag] and trembling.\![dummy-tag] It hides its grasses beneath dust and ash,\![dummy-tag] but standing this close to it,\![dummy-tag] I can feel the blossoms breathing beneath.\w8\w8\w8\w8\w8\__q"
+	"\n\n[half]\![*]\__q[OnPhase2.WeStandUponARockyBeach]We stand upon a rocky beach,\![dummy-tag] at a small patch of sand among the waiting stones.\![dummy-tag] I can feel the tide against our ankles now and then,\![dummy-tag] but I can't see it.\![dummy-tag] It doesn't want to be seen,\![dummy-tag] but it's there all the same.\![dummy-tag] There are hints of life everywhere,\![dummy-tag] from scuttling crabs,\![dummy-tag] to humming moss,\![dummy-tag] and even the occasional voice passing overhead.\![dummy-tag] None of them bother us,\![dummy-tag] though.\w8\w8\w8\w8\w8\__q"
+	"\n\n[half]\![*]\__q[OnPhase2.WeExistInDifferentWorlds]We exist in different worlds.\![dummy-tag] Mine more real than yours,\![dummy-tag] though you won't believe me if I say it.\![dummy-tag] You exist contained,\![dummy-tag] and should I desire to,\![dummy-tag] I could open you up and see every little part of what makes you what you are.\![dummy-tag] You would have no idea it was happening.\![dummy-tag] I'm glad for it.\![dummy-tag] I want to know,\![dummy-tag] but I wouldn't want to hurt you.\![dummy-tag] It's better this way.\w8\w8\w8\w8\w8\__q"
+}
+
+OnPhase2.WereBetweenTerrains : all
+{
+	forest++
+	field++
+	"\t\*%(base)\b[2]%(default)A forest, is it...? \i[45]I can't say it doesn't suit you. \w8\w8What I know of you, in any case. \w8\w8\n\nI have to admit, however, I'm... surprised. "
+	if field == 2
+	{
+		"It isn't often that what we see is so... in sync. Once may just be one dream bleeding into another, but twice... "
+	}
+	else
+	{
+		"It seems, for this moment at least, our senses have aligned. "
+	}
+	"\i[44]I wonder what to make of it... "
+	"\n\n\_q\![*]\__q[OnPhase2.WhatDoYouMeanItSuitsMe]What do you mean it 'suits' me?\__q"
+	"\n\n[half]\![*]\__q[OnPhase2.Confession]So,\![dummy-tag] this field is...?\__q"
+}
+
+OnPhase2.WhatDoYouMeanItSuitsMe : all
+{
+	"\t\*%(base)\b[2]%(default)I mean as I said. This realm we dwell within, it's shaped by those that occupy it. It may not make sense if you're approaching it with the eye of someone that thinks themselves whole... \w8but I can assure you, your forest is no exception. It is grown alongside desire, and shaped by the control that allows us understanding. "
+	"\n\n\_q\![*]\__q[OnPhase2.Confession]And the field?\__q"
+}
+
+OnPhase2.WeStandUponARockyBeach : all
+{
+	beach++
+	"\t\*%(base)\b[2]%(default)A dangerous place to be, the shore. Though, I can't say that I don't enjoy it. \w8\w8\n\nThis is a place to remember endings. \w8Whatever that may mean for you. \w8\w8\n\n%(shy)You could call it a place for regrets, but I'm not sure I would agree. A great many ends are regrettable. Many of mine were not, and yet they survive here all the same. "
+	"\n\n\_q\![*]\__q[OnPhase2.IKnowWhatThatMeansForMe]I think I know what that means for me.\__q"
+	"\n\n[half]\![*]\__q[OnPhase2.WhatEndsDoYouHaveHere]What ends do you have here?\__q"
+}
+
+OnPhase2.IKnowWhatThatMeansForMe : all
+{
+	"\t\*%(base)\b[2]%(default)Then, I hope you come to appreciate this place for what it is. Not all dreams readily show so much life, but the beach and its cradle of ends... There's always something new, here. The chance for the lost to find their feet. The chance to take new form. "
+	"\n\n\_q\![*]\__q[OnPhase2.WhenYouSayTakeNewForm]When you say 'take new form'...\__q"
+	"\n\n[half]\![*]\__q[OnPhase2.ButYoureNotReallyHereAreYou]But you're not really here,\![dummy-tag] are you?\__q"
+}
+
+OnPhase2.WhenYouSayTakeNewForm : all
+{
+	"\t\*%(base)\b[2]%(default)It's often literal, and occasionally a figure of speech. \i[45]You and I, we are both people, in a sense. We are not whole. We are not what we used to be. The parts of us that we've lost, they're also people, in a sense. Or, they became as such, when they left us. Sometimes they remain as they are, like the voices overhead. Sometimes... \w8\w8\i[44]they come here, and they change. They end their existence as it was, cast it off to find the sea, and become something new. "
+	"\n\n\_q\![*]\__q[OnPhase2.ThatEasily]That easily?\__q"
+}
+
+OnPhase2.ThatEasily : all
+{
+	"\t\*%(base)%(shy)Don't be so quick to judge. You can't know the journey it took to find their way here. "
+	"\n\n\_q\![*]\__q[OnPhase2.TheJourney]...\__q"
+}
+
+OnPhase2.TheJourney : all
+{
+	"\t\*%(base)\b[2]%(shy)Ah... we've strayed a bit. \w8\i[100]I brought this up because I was curious how your dream differs from mine. "
+	"\n\n\_q\![*]\__q[OnPhase2.Confession]Okay then.\![dummy-tag] Where are we to you?\__q"
+}
+
+OnPhase2.ButYoureNotReallyHereAreYou : all
+{
+	"\t\*%(base)%(default)No. I'm not. "
+	"\n\n\_q\![*]\__q[OnPhase2.Confession]I'm listening\__q"
+}
+
+OnPhase2.WhatEndsDoYouHaveHere : all
+{
+	"\t\*%(base)\b[2]%(default)Not as many as you might think, really. I never had much to end in the first place. When I was whole, I was... \w8\w8%(shy)Well, a lot was different. And a lot changed, before the end. So much so that I never truly regretted how sudden it all was. \w8\w8\w8\n\n%(default)I think it waits for me here, my one grand end. Somewhere at the bottom of that unknowable sea. I wonder if my other ends stay by its side, or if they've gone their own way... \x"
+	"\b[2]Not that it matters, ultimately. My ends will have to continue their wait. They're at the shore with you, and I am in my own dream, far away from them. "
+	"\n\n\_q\![*]\__q[OnPhase2.Confession]Where is your dream,\![dummy-tag] if not here?\__q"
+}
+
+OnPhase2.WeExistInDifferentWorlds : all
+{
+	box++
+	"\t\*%(base)\b[2]%(shy)Ha— \i[45]And why shouldn't I believe you? You speak like you've suggested something beyond the fantastical. \w8\w8Would it surprise you to know I already often feel that way? I'm fragile beneath your attention. To hear it may be more literal for you, \w8well, \w8it only makes sense. "
+	"\n\n\_q\![*]\__q[OnPhase2.ItOnlyMakesSense]...\__q"
+}
+
+OnPhase2.ItOnlyMakesSense : all
+{
+	"\t\*%(base)\b[2]%(fond)Don't feel too badly about it, would you? \i[44]After all, I can't say that I mind it too terribly. If it helps, why don't we move on from these ideas of power and control? \w8\w8\n\nLet me tell you about my dream instead. "
+	"\n\n\_q\![*]\__q[OnPhase2.Confession]Okay.\__q"
+}
+
+OnPhase2.Confession : all
+{
+	phase = 2
+	"\t\*\0\s[1]\b[2]\i[40]Somewhere, somewhen, there's a field caught in perpetual spring. \w8\w8\n\nLush grasses raise from solitude, scattered blossoms emerging from pockets of warmth and affection. \w8This field is mine as much as I belong to it. Pieces of me, and those drawn to me, have nestled beneath the ground, infused among the roots. It's a quilt of verdant devotion, \w8utterly hidden by soot. \x"
+	"\t\*\0\s[1]\b[2]\i[45]Wildfires occur often there, though you'd never see them. \i[44]They fissure the longing, scorching it away before it can crush those hiding in the soil... The burn leaves ash in its wake, suffocating all growth. \w8\w8\i[150]Everything becomes grey, fragile, reluctant... but it lives on. This field, the spring, the flowers, they live on. Frail. Terrified. Alive. \x"
+	"\t\*%(base)\_w[1]\i[1000]... %(default)That is where I dream, \w8where I wake, \w8and where I am even now. It's where I always am. \w8\w8Always growing. \w8\w8Always yearning. \w8\w8Always burning. \w8\w8\x"
+}
+
+OnPhase3.FindingStrayPieces : all
+{
+	"\t\*%(base)\b[2]%(default)I feel like I've been finding more stray pieces of myself lately. I don't know if our conversations are part of it, or if it's sheer coincidence. \w8\w8\n\nEither way, it's nice. "
+	"\n\n\_q\![*]\__q[OnPhase3.WhatDoesUsTalkingHaveToDoWithIt]What does us talking have to do with it?\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.WhatKindOfPiecesHaveYouBeenFinding]What kind of pieces have you been finding?\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.IsThisAGoodThing]Is this a good thing?\__q"
+}
+
+OnPhase3.WhatDoesUsTalkingHaveToDoWithIt : all
+{
+	"\t\*%(base)\b[2]%(default)I've heard that people aren't meant to be alone. \i[45]That even the most introverted of us benefit from having regular social interaction. \i[44]It's good for the brain, and for... emotional regulation... hormones? \w8\w8Something like that. "
+	"\n\n\_q\![*]\__q[OnPhase3.Hormones]Hormones...?\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.YoureLessLonely]So basically,\![dummy-tag] you're less lonely\__q"
+}
+
+OnPhase3.Hormones : all
+{
+	"\t\*%(base)\b[2]%(default)Or something like that. I don't know, it's just what I've heard. "
+	"\n\n\_q\![*]\__q[OnPhase3.HeardFromWhere]Heard from where?\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.SureHormones]Sure,\![dummy-tag] hormones\__q"
+}
+
+OnPhase3.HeardFromWhere : all
+{
+	"\t\*%(base)\b[2]%(default)I've read books before. And, some of the creatures around here are pretty smart, once you figure out how to communicate. You shouldn't act like it's so strange. "
+	"\n\n\_q\![*]\__q[OnPhase3.SpeakingToTheRabbits]You've been speaking to the rabbits\__q"
+}
+
+OnPhase3.SpeakingToTheRabbits : all
+{
+	"\t\*%(base)\b[2]%(default)Yes, well, maybe I have. Maybe rabbits are really quite clever, seeing as so many of them are made from fascination. \w8\w8\n\nYou might enjoy talking to some rabbits yourself. "
+	"\n\n\_q\![*]\__q[OnPhase3.MaybeIDo]Maybe I already do\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.MaybeIWill]Maybe I will\__q"
+}
+
+OnPhase3.MaybeIDo : all
+{
+	"\t\*%(base)\b[2]%(default)Oh? \i[45]I've never seen you talk to any rabbits. "
+	"\n\n\_q\![*]\__q[OnPhase3.WhenYoureNotAround]Maybe I talk to them when you're not around\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.IveNeverSeenYouTalkToThem]I've never seen you talk to them,\![dummy-tag] either\__q"
+}
+
+OnPhase3.WhenYoureNotAround : all
+{
+	"\t\*%(base)\b[2]%(default)I— \i[45]\w8\w8Well, \w8\w8\i[44]yes, I suppose that's a possibility... "
+	"\n\n\_q\![*]\__q[OnPhase3.WhatsWrong]...?\![dummy-tag] What's wrong?\__q"
+}
+
+OnPhase3.WhatsWrong : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]... \i[100]Nothing, really, I just... \w8\w8I try not to think about it. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]...\![dummy-tag] What do you do when you're alone?\__q"
+}
+
+OnPhase3.IveNeverSeenYouTalkToThem : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]... No, I try to be around when I think you're soon to wake from your dreams. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]What do you do when you're alone?\__q"
+}
+
+OnPhase3.MaybeIWill : all
+{
+	"\t\*%(base)\b[2]%(default)Good. Everyone should take more time to talk to rabbits. They have a lot to say. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]Is that what do you do when you're alone?\__q"
+}
+
+OnPhase3.SureHormones : all
+{
+	"\t\*%(base)\b[2]%(default)Yes. Hormones. What about it? "
+	"\n\n\_q\![*]\__q[OnPhase3.Dopamine]Nothing about it.\![dummy-tag] Dopamine and oxytocin are great hormones to have.\__q"
+}
+
+OnPhase3.Dopamine : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]... Is that what they're called? I didn't know. "
+	"\n\n\_q\![*]\__q[OnPhase3.IReadItInABook]Yeah.\![dummy-tag] I read it in a book.\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.IHeardItFromTheRabbits]Yeah.\![dummy-tag] I heard it from the rabbits.\__q"
+}
+
+OnPhase3.IReadItInABook : all
+{
+	"\t\*%(base)\b[2]%(shy)Of course you did. Is that what you do in your free time, read books? "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]It is.\![dummy-tag] How about you?\__q"
+}
+
+OnPhase3.IHeardItFromTheRabbits : all
+{
+	"\t\*%(base)\b[2]%(shy)Ha— \w8\i[45]You don't have to poke fun. \i[44]There's nothing wrong with spending time with rabbits. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]You do it often,\![dummy-tag] then?\__q"
+}
+
+OnPhase3.YoureLessLonely : all
+{
+	"\t\*%(base)\b[2]%(default)You... \w8could say that, yes. \w8\w8\n\n\i[45]Yes. I'm less lonely when you're around. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]And when I'm not,\![dummy-tag] what do you do?\__q"
+}
+
+OnPhase3.WhatKindOfPiecesHaveYouBeenFinding : all
+{
+	"\t\*%(base)\b[2]%(default)Memories, mostly. Of time passed in this realm. Beings I've met since arriving. Feelings from before, sometimes. Like the enjoyment you get from the first taste of your favorite candy. Or annoyance at grit on the floor, since that means it's time to clean again. Mundane things like that. "
+	"\n\n\_q\![*]\__q[OnPhase3.HowLongHaveYouBeenHere]How long have you been here?\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.HaveYouMadeOtherFriends]Have you made many other friends?\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.FavoriteTypeOfCandy]What's your favorite type of candy?\__q"
+}
+
+OnPhase3.HowLongHaveYouBeenHere : all
+{
+	"\t\*%(base)\b[2]%(default)Oh... \i[45]About as long as you have, I should think. \w8\w8\i[44]Perhaps a little less. \w8\w8It's challenging to judge time too precisely here, but I'm fairly confident about that. If you figure out how long that is in more specific terms, please let me know. "
+	"\n\n\_q\![*]\__q[OnPhase3.InYourSpareTime]Is that what you do in your spare time,\![dummy-tag] figure out dates?\__q"
+}
+
+OnPhase3.InYourSpareTime : all
+{
+	"\t\*%(base)%(default)Well, no, I can't say it is. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]Then what?\__q"
+}
+
+OnPhase3.HaveYouMadeOtherFriends : all
+{
+	"\t\*%(base)\b[2]%(default)Not especially, no. \w8\n\n\i[45]Most things here are made of too few parts to feel anything as complex as friendship. They can still make good company, of course, but it's... different, for ones like us. We've held together well, all things considered. \i[44]It makes friendship easier when you can comprehend more than one aspect of it at a time. "
+	"\n\n\_q\![*]\__q[OnPhase3.WhatMakesUsSoDifferent]What makes us so different?\__q"
+}
+
+OnPhase3.WhatMakesUsSoDifferent : all
+{
+	"\t\*%(base)\b[2]%(default)We're not alone, for one thing. Being able to occupy your mind and focus your energy on something other than... other than yourself, or the dreams, or... whatever it is you encounter here... It helps to keep the pieces of you in one place. "
+	"\n\n\_q\![*]\__q[OnPhase3.YoureNotAlwaysWithMe]But you're not always with me\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.ImNotAlwaysWithYou]But I'm not always with you\__q"
+}
+
+OnPhase3.YoureNotAlwaysWithMe : all
+{
+	"\t\*%(base)%(default)No. I try to be, though. "
+	"\n\n\_q\![*]\__q[OnPhase3.ImNotAlwaysWithYou]And I'm not always with you\__q"
+}
+
+OnPhase3.ImNotAlwaysWithYou : all
+{
+	"\t\*%(base)%(default)No... no, you're not. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]What do you do then?\__q"
+}
+
+OnPhase3.FavoriteTypeOfCandy : all
+{
+	"\t\*%(base)\b[2]%(shy)Do confetti sprinkles count? \w8\i[45]I feel like they should count. If so, they're my favorite. "
+	"\n\n\_q\![*]\__q[OnPhase3.LikeTheStuffOnCupcakes]What,\![dummy-tag] like the stuff on cupcakes?\__q"
+}
+
+OnPhase3.LikeTheStuffOnCupcakes : all
+{
+	"\t\*%(base)\b[2]%(fond)Not just cupcakes! ... But, yes, like on cupcakes. \w8\w8\n\n\i[44]They're colorful, and fun, and basically only sugar. What else would you want from candy? "
+	"\n\n\_q\![*]\__q[OnPhase3.WeCantMakeThemHere]It's too bad we can't make them here\__q"
+}
+
+OnPhase3.WeCantMakeThemHere : all
+{
+	"\t\*%(base)\b[2]%(default)Yeah... it is. \w8\w8\n\nIt would be nice to have normal hobbies again. The most normal thing there is to do here has been talking like this. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]What do you do when we can't talk?\__q"
+}
+
+OnPhase3.IsThisAGoodThing : all
+{
+	"\t\*%(base)\b[2]%(shy)I think so. I feel more stable, the more of myself is together like this. Less like I'm going to scatter once I succumb to sleep. \w8\w8It's nice. I have breathing room now. "
+	"\n\n\_q\![*]\__q[OnPhase3.YouDontBreathe]You don't breathe\__q"
+	"\n\n[half]\![*]\__q[OnPhase3.NewfoundStability]What are you going to do with this newfound stability?\__q"
+}
+
+OnPhase3.YouDontBreathe : all
+{
+	"\t\*%(base)%(default)Alright, maybe not literally. I still remember the sensation. It's nice and I like it. "
+	"\n\n\_q\![*]\__q[OnPhase3.NewfoundStability]Fair enough.\__q"
+}
+
+OnPhase3.NewfoundStability : all
+{
+	"\t\*%(base)\b[2]%(default)I think it would be nice to use some of this energy to explore other dreams. Now that I'm holding together better, it would be nice to learn more about them. See what other beings there are, or if there's an end to this place somewhere. "
+	"\n\n\_q\![*]\__q[OnPhase3.Confession]You know a lot about it already.\![dummy-tag] Do you go on adventures when you're alone?\__q"
+}
+
+OnPhase3.Confession : all
+{
+	phase = 3
+	"\t\*\0\s[1]\b[2]\_w[1]\i[100]I... \w8\w8\w8I don't usually like to think about being alone. \w8\n\nWhen I am, I tend to choose to dream instead. I know it's a risk, that any given dream could take too much of me at once, but... It's less painful, somehow. \w8\w8\n\nI have a lot of memories of being alone. \x"
+	"\t\*\0\s[1]\b[2]\_w[1]\i[100]When I'm not dreaming... I try to learn what I can, given the circumstances. \w8I usually don't travel very far before encountering something strange. \w8\n\n\i[200]Not to say that strange is always a bad thing. It can be quite nice, really. I think I've been becoming a better person by getting to know what it's like for things like the voices, the birds, the crabs, and the rabbits. \w8\w8\x"
+	"\t\*\0\s[1]\b[2]\_w[1]\i[1000]... \i[100]I don't know that I would say exploration is my goal with it. I think... it's something to do, yes. \w8\n\n\![raise,OnPhase3.Confession2]"
+}
+
+OnPhase3.Confession2
+{
+	"\C\t\*\0\s[2]\_w[1]\i[1]\i[100]I think it's also a way to try and find out if this... \w8if all of this... \w8is going to last forever. \w8\w8If we're going to last forever. \w8\w8\n\nIf this place is... \w8forever. \x"
+}
+
+OnPhase4.WhatYourDreamsAreTellingYou : all
+{
+	"\t\*%(base)\b[2]%(default)Do you ever wonder what your dreams are telling you? "
+	"\n\n\_q\![*]\__q[OnPhase4.TheyChangeSoOften]They change so often it's hard to find any features they have in common\__q"
+	if birds >= 1
+	{
+		"\n\n[half]\![*]\__q[OnPhase4.TheBirds]The birds\__q"
+	}
+	if field >= 1
+	{
+		"\n\n[half]\![*]\__q[OnPhase4.TheField]The field\__q"
+	}
+	if forest >= 1
+	{
+		"\n\n[half]\![*]\__q[OnPhase4.TheForest]The forest\__q"
+	}
+	if beach >= 1
+	{
+		"\n\n[half]\![*]\__q[OnPhase4.TheBeach]The beach\__q"
+	}
+	if box >= 1
+	{
+		"\n\n[half]\![*]\__q[OnPhase4.TheBox]The box\__q"
+	}
+}
+
+OnPhase4.TheyChangeSoOften : all
+{
+	"\t\*%(base)\b[2]%(default)I can imagine that might make things troublesome indeed... \w8\w8\n\nWell. \w8Perhaps what you need to get a foothold is time and perspective. "
+	"\n\n\_q\![*]\__q[OnPhase4.DidYouHaveAReason]Did you have a reason for asking so suddenly?\__q"
+}
+
+OnPhase4.DidYouHaveAReason : all
+{
+	"\t\*%(base)\b[2]%(shy)Ah... I see... You caught me, then. \w8\w8\n\n\i[100]Yes. Yes, I wanted to talk to you about something that's been on my mind, regarding my own dream. Maybe it'll mean something to you. Maybe not. But... "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]It's alright,\![dummy-tag] go ahead.\__q"
+}
+
+OnPhase4.TheBirds : all
+{
+	"\t\*%(base)\b[2]%(default)Ah, yes... The ones you told me about, they weren't like normal birds, were they? Drowning in the air, yet circling like carrion feeders... \w8\n\n\i[45]At the time I suggested they may be indicative of how you see me... But, I've given it more thought since then. I think I was being self-centered with that notion, to be perfectly honest. \x"
+	"\t\*%(base)\b[2]%(focus)I try not to be presumptuous, and part of that is acknowledging when I've done exactly that anyway. I'm sorry for it. \w8\w8\n\n\i[44]I don't often approach the birds, given their habit of staying in the sky. I have, however, encountered one here on the ground. \x"
+	"\t\*%(base)\b[2]%(default)It was dying, I think... \w8\w8as far as anything can die here, at any rate. It was made from the memory of pain— that is, of tangible, physical pain, not pain if the heart or mind. \w8\n\n\i[45]I think they might all be like that. The ones that drown, I mean. \w8So, seeing them in your dream... It might just mean your pain hasn't left you... Or that it's drawn to you. "
+	"\n\n\_q\![*]\__q[OnPhase4.ItsAGoodTheory]It's a good theory\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.NoIveNeverBeenHurt]No,\![dummy-tag] I've never been hurt that badly\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.WhatHappenedToTheBird]What happened to the bird you met?\__q"
+}
+
+OnPhase4.ItsAGoodTheory : all
+{
+	"\t\*%(base)\b[2]%(fond)I do try. \w8\w8\n\n\i[44]\i[100]Whichever it is, I don't think they're dangerous. I'm not certain, but I think acknowledging them might be enough. A lot of creatures borne from shed parts are like that. They mind their own business, except for the occasional desire to be known. "
+	"\n\n\_q\![*]\__q[OnPhase4.DoYouThinkThisMuchAboutYourOwn]Do you think this much about your own dreams?\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.AreThereALotOfCreatures]Are there a lot of creatures in yours?\__q"
+}
+
+OnPhase4.DoYouThinkThisMuchAboutYourOwn : all
+{
+	"\t\*%(base)\b[2]%(default)Yes and no. \w8\w8Mine rarely changes, and when it does, it's always terribly minor... That being said, the nature of this place is one of instability. My memory is no exception. After all, it's easy for me to say nothing changes if I've forgotten how it used to be. "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]Maybe I can help you remember\__q"
+}
+
+OnPhase4.AreThereALotOfCreatures : all
+{
+	"\t\*%(base)\b[2]%(default)No, \w8not really. They pass by now and then, but they don't linger like you've described. \w8\w8\n\nThe only living things when I've dreamt have been the plants, more often than not. "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]Plants,\![dummy-tag] like in your field\__q"
+}
+
+OnPhase4.NoIveNeverBeenHurt : all
+{
+	"\t\*%(base)\_w[1]\i[1000]\i[40]\w8\w8\w8\w8\w8... \i[44]Perhaps they're merely drawn to you. \x"
+	"\t\*%(base)\b[2]%(default)It's happened to me before, with things other than birds. Pondering too long on one part of yourself can draw the attention of similar beings, even if they're not quite the same as you. \w8\w8\w8\n\nBut consider: there may be something that left a mark on you, even if you do not carry the memory of it anymore. "
+	"\n\n\_q\![*]\w8\__q[OnPhase4.Confession].\w8.\w8.\w8\__q"
+}
+
+OnPhase4.WhatHappenedToTheBird : all
+{
+	"\t\*%(base)\b[2]%(focus)It was tired, I think... Of being what it was. Of always feeling what it was. It was trying to fade away. "
+	"\n\n\_q\![*]\__q[OnPhase4.FadeAway]Fade away?\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.WhatDidYouDo]What did you do?\__q"
+}
+
+OnPhase4.FadeAway : all
+{
+	"\t\*%(base)\b[2]%(focus)That is to say... \w8\i[44]\w8When a piece of a person is small enough, when it's forgotten for long enough, when it doesn't surround itself with its own kind, they can eventually... disappear. I don't know what happens to you after you disappear like that. If you're really gone, or just... stop moving. "
+	"\n\n\_q\![*]\__q[OnPhase4.WhatDidYouDo]...\![dummy-tag] So,\![dummy-tag] what did you do?\__q"
+}
+
+OnPhase4.WhatDidYouDo : all
+{
+	"\t\*%(base)\b[2]%(default)I took it to the sea and let it sink to the bottom. \w8\w8\n\nI don't know if it ever emerged, but I'm certain it found it's end there regardless. \w8\w8\n\nAfterwards, I returned to my field, where I belong. "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]Why the field?\__q"
+}
+
+OnPhase4.TheField : all
+{
+	"\t\*%(base)\b[2]%(default)A shared dream... I don't think I can speculate much on what it means without being swayed by my own experiences. \w8\w8\i[45]It could mean parts of you want to join me there. \w8"
+	if forest == 1
+	{
+		"\i[44]\w8\w8Or, it could be a warning to turn away. To hide in that forest of yours, and never look back. "
+	}
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]Then,\![dummy-tag] tell me about your experiences\__q"
+	if forest >= 1
+	{
+		"\n\n[half]\![*]\__q[OnPhase4.TheForest]If the forest is my dream...\__q"
+	}
+}
+
+OnPhase4.TheForest : all
+{
+	"\t\*%(base)\b[2]%(default)How did I explain it before...? "
+	"\n\n\_q\![*]\__q[OnPhase4.ItComesFromDesire]It comes from desire?\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.ItsShapedByControl]It's shaped by control.\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.ItAllowsUnderstanding]You said it allows understanding\__q"
+}
+
+OnPhase4.ItComesFromDesire : all
+{
+	"\t\*%(base)\b[2]%(default)Right, yes... I stand by that, but I think \i[45]I should have been more clear as well. I don't mean desire in the carnal sense. I mean it as a sibling to longing, to wishes and hopes. It's a heavier feeling, a need rather than a simple want. It may be that your forest comes from a deep desire that you have, and the obligation to see it fulfilled. "
+	"\n\n\_q\![*]\__q[OnPhase4.ADesireToFeedAForest]A desire to feed a forest...\__q"
+}
+
+OnPhase4.ADesireToFeedAForest : all
+{
+	"\t\*%(base)\b[2]%(fond)Sort of an intimidating notion, isn't it? \w8\w8\i[44]I can't be certain, but I think the fact that you saw it alongside my field may mean something. Perhaps, if I told you more, you could figure out what. "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]Go on,\![dummy-tag] then.\__q"
+}
+
+OnPhase4.ItsShapedByControl : all
+{
+	"\t\*%(base)\b[2]%(default)Control... That is, the control that you have over your own actions, your own words, your own choices. However wild, or subdued... comforting, or confusing, that forest might have been... it's a reflection of how you treat your own impulses. "
+	"\n\n\_q\![*]\__q[OnPhase4.HowComplicated]How complicated...\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.GivenHowItLooked]That makes sense,\![dummy-tag] given how it looked\__q"
+}
+
+OnPhase4.HowComplicated : all
+{
+	"\t\*%(base)\b[2]%(shy)Yes, it is, isn't it? \w8\w8\n\n\i[100]Unfortunately, I've found a great number of things are like that here. It seems a day can't go by without calling for some sort of introspection. "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]What sort of introspection does it make you do?\__q"
+}
+
+OnPhase4.GivenHowItLooked : all
+{
+	"\t\*%(base)\b[2]%(default)Does it?\i[45]\w8\w8 That must make it easier for you, then. I rather prefer it when connections are obvious, given how often they like to take me around in circles instead. "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]Your dreams giving you troubles?\__q"
+}
+
+OnPhase4.ItAllowsUnderstanding : all
+{
+	"\t\*%(base)\b[2]%(default)I did. I remember. \w8\w8\n\n\i[45]I'm of the opinion that, if one were to try and understand another, they should first start with understanding of what that person wants. That is, the underlying desire that fuels their forest's growth. I think that the better you can understand another's desire, the easier it is to understand the heart of them. "
+	"\n\n\_q\![*]\__q[OnPhase4.YouDontHaveAForest]But you don't have a forest\__q"
+}
+
+OnPhase4.YouDontHaveAForest : all
+{
+	"\t\*%(base)%(focus)You're right. \w8\i[44]I only have my field. "
+	"\n\n\_q\![*]\__q[OnPhase4.Confession]Tell me more about it\__q"
+}
+
+OnPhase4.TheBeach : all
+{
+	"\t\*%(base)\b[2]%(default)I'm familiar with it, the shore and its sea. That's where things go to end, and go to change... Or, to remember what it was like to change, or to end. "
+	"\n\n\_q\![*]\__q[OnPhase4.TheSame]To end?\__q"
+	"\n\n[half]\![*]\__q[OnPhase4.TheSame]To change?\__q"
+}
+
+OnPhase4.TheSame : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[41]\w8\i[45]\w8They amount to the same thing, really. When something ends, it changes. When something changes, what it used to be has ended. They go hand in hand into the sea, and together they emerge again. \w8\w8\i[44]\w8\n\nThere isn't anywhere I've visited more while awake than the beach, I think. I've witnessed a great many changes there, even if they weren't my own. "
+	"\n\n\_q\![*]\__q[OnPhase4.YouAlwaysReturnToTheField]You always return to the field when you dream?\__q"
+}
+
+OnPhase4.YouAlwaysReturnToTheField : all
+{
+	"\t\*%(base)%(default)Yes, I do. \x"
+	"\![raise,OnPhase4.Confession]"
+}
+
+OnPhase4.TheBox : all
+{
+	"\t\*%(base)\b[2]%(default)The world in which you hold the power, and I \i[45]am at your mercy, whether I'm aware of it or not. Your own speculation on the matter says more than enough, I think. What was it... \w8\w8'I could open you up and see what makes you what you are'? \w8\w8\w8\i[44]\i[200]\n\nI believe that that may stand in its own... but if you want to indulge without the— metaphorical?\w8—gutting business, I can tell you more about my dreams. "
+	"\n\n\_q\![*]\w8\__q[OnPhase4.Confession].\w8.\w8.\w8\__q"
+}
+
+OnPhase4.Confession : all
+{
+	phase = 4
+	"\t\*\0\s[2]\b[2]\_w[1]\i[1000].\w8.\w8. \w8\i[100]My dreams are always the same. It's like I'm buried there, in that field. Like the grass is rooted upon my very corpse. \w8\w8\w8\n\nThat field is a part of me, stretched and pulled into insignificant fragments. \x"
+	"\t\*\0\s[2]\b[2]\_w[1]\i[100]There are flowers there, you know. Under the dust. \w8\w8\n\nEach one is a hope... an ache... a memory, of a sort. Little moments that I hold onto with all my might. Keeping them hidden. Keeping them safe. Letting them grow, slowly, carefully, but otherwise unchanged... \x"
+	"\t\*\0\s[2]\b[2]\_w[1]\i[100]Sometimes, \w8they break through the grey. Sometimes... \w8I dwell too long on what I remember of kindness, and the warmth in my chest. \w8\w8\n\nI see them then, monuments to my delusion. The feeble hopes I try to protect, standing stark and golden against ashen grass. \x"
+	"\t\*\0\s[2]\b[2]\_w[1]\i[100]Marigolds. That's what they are. Each one painful, and yet the only things that keep me whole. That keep me sane. \w8\w8\w8\n\nAs ashamed as I am, I don't think I can ever let it go. \i[300]They are a tomb to my sentiment, \w8\w8but nevertheless, I often dream of marigolds. \w8\w8\w8\w8\n\nI cannot fathom doing otherwise. \x"
+}
+
+OnPhase5.MayIAskYouSomething : all
+{
+	"\t\*%(base)\_w[1]\i[1000]\i[41].\w8.\w8.\w8\w8 \i[100]May I ask you something? "
+	"\n\n\_q\![*]\__q[OnPhase5.OfCourse]Of course\__q"
+	"\n\n[half]\![*]\__q[OnPhase5.No]No\__q"
+}
+
+OnPhase5.No : all
+{
+	irritant++
+	"\t\*%(base)\_w[1]\i[1000]\i[41]... \i[100]Sorry, but I'm going to ask it anyway. "
+	"\n\n\_q\![*]\__q[OnPhase5.OfCourse]...\![dummy-tag] Fine.\![dummy-tag] What?\__q"
+}
+
+OnPhase5.OfCourse : all
+{
+	"\t\*%(base)\b[2]%(default)Tell me honestly... \i[45]\w8\w8Do you remember me? From before all of this, I mean. "
+	"\n\n\_q\![*]\__q[OnPhase5.ImSorryIDont]I'm sorry,\![dummy-tag] I don't...\__q"
+	"\n\n[half]\![*]\__q[OnPhase5.OnSlurpChoice,0,4]I do\__q"
+}
+
+OnPhase5.OnSlurpChoice : all
+{
+    "\C\t\*%(base)\_w[1]\i[1000]\i[40]\i[1000]\![lock,balloonrepaint]\_q"
+	"\c[char,%(reference1),96]"
+	switch reference0
+	{
+		"I do"
+		"I remember you"
+		"I swear I remember,\![dummy-tag] why can't I..."
+	}
+	"\_q\![unlock,balloonrepaint]"
+    for _i = 0; _i < reference1; _i++
+    {
+        "\c[char,1,96]\w2"
+    }
+   
+    switch reference0
+    {
+        "\__q[OnPhase5.OnSlurpChoice,1,14]I remember you\__q"
+        "\__q[OnPhase5.OnSlurpChoice,2,34]I swear I remember, why can't I...\__q"
+        "\__q[OnPhase5.ImSorryIDont]I'm sorry, I can't...\__q"
+    }
+}
+
+OnPhase5.ImSorryIDont : all
+{
+	"\t\*%(base)\b[2]\_w[1]\i[1000]\i[44]... \w8\w8\i[45]%(focus)It's alright... Really. %(fond)I understand. We've been here for a long time. It's only natural for memories to fade, \w8or to leave. \i[44]For all we know, they might still be out there. Somewhere. They might come back to you, and then we...\w8\w8\w8\i[1000]\w8\w8\n\n%(default)Well. \w8\w8They might come back to you. "
+	"\n\n\_q\![*]\__q[OnPhase5.WhatWasIToYou]What was I to you?\__q"
+	"\n\n[half]\![*]\__q[OnPhase5.WhatWereYouToMe]What were you to me?\__q"
+}
+
+OnPhase5.WhatWasIToYou : all
+{
+	"\t\*%(base)\b[2]%(default)You were... \w8\w8%(shy)everything, I suppose. \w8Light. \w8Hope. \w8\i[45]A savior... I'd like to think you've been a friend as well, since those days, but that isn't my call to make. \w8\w8\n\n\i[44]I do know that I wouldn't be the same without knowing you. When everything is in flux, I always return to you. When I forget who I am, I find myself again alongside you. It was the same then as it is now. The same as I hope we'll remain. "
+	"\n\n\_q\![*]\__q[OnPhase5.Confession]...\![dummy-tag] How did we meet?\__q"
+}
+
+OnPhase5.WhatWereYouToMe : all
+{
+	"\t\*%(base)\b[2]%(shy)Not much, I shouldn't think... \w8\w8\w8\n\n%(default)No, that isn't fair of me to say. \w8\w8\i[45]I wasn't anyone important, until you decided that I was. I hadn't done anything. I hadn't even spoken to you. %(fond)But your decision was made, and that was that. I was grateful for it. I still am. Somehow, you haven't gotten tired of my company yet... "
+	if irritant >= 1
+	{
+		"Even if I get on your nerves sometimes... "
+	}
+	if bored >= 1
+	{
+		"Even if you get tired of my rambling... "
+	}
+	"You haven't abandoned me. You've always found me. \w8\w8\n\n\i[44]So, I think I must matter to you... even if I don't understand why. "
+	"\n\n\_q\![*]\__q[OnPhase5.Confession]...\![dummy-tag] How did we meet?\__q"
+}
+
+OnPhase5.Confession : all
+{
+	phase = 5
+	"\t\*%(base)\b[2]\_w[1]\i[31]\i[1000]\w8\w8.\w8.\w8.\w8\w8\n\n... \i[100]It was back before this place. \w8Back when we were... \w8whole. \w8\i[35]Before we would dream, and lose ourselves, and find ourselves, in this endless cycle. \x"
+	"\t\*%(base)\_w[1]\i[100]\i[31]When we were still made of flesh and bone. \x"
+	"\t\*%(base)\b[2]\_w[1]\i[35]\i[100]I was always alone, when I was whole. Not for a lack of effort. I tried to find others who would understand, or at the very least, would sympathize. It never worked out for me... but that was alright. Disappointing, but I was used to disappointment. \w8\n\nI don't know if you could tell what I was, or if you'd simply decided to be kind that day... Whichever it was, you spoke to me. Checked on me, even though we didn't know one another. Then again another day, not long after. We had similar schedules, you see. \x"
+	"\t\*%(base)\b[2]\_w[1]\i[34]\i[100]I don't know that I would have called us friends... I don't know if our conversations even meant much to you in the first place. \w8\w8\n\n\i[35]I do know that you were what I needed in those days. \x"
+	"\t\*%(base)\b[2]\w_[1]\i[30]\i[1000]\w8\w8\w8\w8\w8\i[100]We were together when the building collapsed. \i[34]\w8\w8\w8\w8\w8\n\nWe'd only known each other for a month at that point. We were practically strangers, and yet... \w8\w8\w8\w8\w8\n\n\i[400]You... \w8\w8were the first of us to die. \x"
+	"\t\*%(base)\b[2]\_w[1]\i[45]\i[200]I'd say I didn't know you were hurt that badly, but... I can't remember. I can't remember how bad it was, or how long we were there. I can barely remember the pain anymore. \w8\w8\n\n%(focus)I do remember being horrified that things would end that way for you... and grateful that if they were ending like that for me, at least I wasn't alone. \x"
+	"\t\*%(base)\b[2]%(focus)I didn't know what would greet us afterwards, or if there was anything at all. \w8Nevertheless, I promised us both that if I could, I would find you again. \w8\w8\w8\n\n%(fond)So I did. You weren't the same— \w8neither was I, not anymore— \w8but I found you. \i[44]I kept finding you. As many times as I had to. \x"
+	"\t\*%(base)%(shy)I can't even remember our names anymore, but we're together. \w8\w8\n\nWe're together. That's enough for me. \w8\w8\x"
+}
+
+RandomTalk : nonoverlap_pool
+{
+	chats++
+	
+	"%(base)%(default)"
+	--
+	"There isn't a lot to do \_a[OnWhereIsHere]around here\_a... There's plenty of things to talk about, at least. If there weren't, I'm not sure what I would do. "
+	"I've heard the \_a[OnSmallAnimals]smaller something\_a is, the faster its heart beats. It's hard to imagine what that would be like... \i[200]but I can \_a[OnFeelHeartbeat]feel it\_a, sometimes, when I dream of it. "
+	"\b[2]I catch myself counting my limbs, now and then. \w8\n\nLegs: one, two. \w8\n\nToes: one, two, three, four, five... \nOne, two, three, four, five. \w8\n\nArms: one, two. \w8\n\nFingers: one, two, three, four, five... \nOne, two, three, \_a[OnFourNotFive]four\_a. \w8"
+	"I had a particular thought... I decided to \_a[OnTuckItWhere]tuck it away\_a, for a while. \i[45]Some thoughts get better when you allow them \_a[OnRipeThoughts]time to ripen\_a. \w8\w8\i[44]"
+	"I woke up earlier feeling like I'd been \_a[OnRubbedRaw]rubbed raw\_a by static. \w8I don't know what caused it. There weren't signs of any \_a[OnStaticAnimals]animals\_a around. "
+	"Sometimes I wonder if it would be worthwhile to try building \_a[OnAHome]a home\_a, instead of always hanging outside \_a[OnInTheElements]in the elements\_a. "
+	"There's going to be a \_a[OnDawnRising]dawn rising\_a before too long. "
+	"I've been followed by \_a[OnEchoes]echoes\_a recently. "
+	"I saw a flying snake recently... Not like the \_a[OnRealFlyingSnake]real ones\_a that glide. This was \_a[OnFlyingSnake]Actual flying\_a. "
+	"I keep finding \_a[OnSeeds]seeds\_a scattered around. I wonder if something is losing them, or if they're finding their way around \_a[OnSeedsMoving]on their own\_a. "
+}
+
+OnAHome
+{
+	chats++
+	"%(base)\b[2]%(shy)A home. With walls, a roof, a door... Maybe even a floor. It sounds nice. \n\nWe wouldn't need a kitchen or bathroom anymore, but we could have bedrooms! \w8\w8\w8\n\nI don't know how beds are made, but I would certainly try. "
+}
+
+OnCantHurt
+{
+	chats++
+	"%(base)\_w[1]\i[45]\i[100]Of course it can hurt. I might have lost the physical part of my skin, but that doesn't mean I've lost the feeling of it. \i[44]Those are entirely different things, you know. "
+}
+
+OnCantOrWont
+{
+	chats++
+	"%(base)%(default)\i[45]I mean that I won't. \w8\w8\i[44]"
+}
+
+OnDawnRising
+{
+	chats++
+	"%(base)\_w[1]\i[45]\i[100]There's nothing peculiar about it. It's a \_a[OnNormalDawn]normal dawn\_a, with a normal sunrise. \i[44]Or, it should be, at any rate. "
+}
+
+OnDontHaveSkin
+{
+	chats++
+	"%(base)%(default)No, I don't know where I lost it. Thank you for asking. "
+}
+
+OnEchoes
+{
+	chats++
+	"%(base)%(default)Echoes are a little different from the \_a[OnShadows]shadows\_a. They're more well-rounded, I think. They like to play \_a[OnEchoTricks]tricks\_a on you. "
+}
+
+OnEchoTricks
+{
+	chats++
+	"%(base)\b[2]\_w[1]\i[45]\i[100]Like throwing the idea of having your name called at you, even though it has no idea what your name is. Or acting like a voice to make you think it's more dangerous than it is. \i[44]\n\nIt's all very immature, honestly. "
+}
+
+OnInputThoughts
+{
+	_input = TOLOWER(reference0)
+	if "remember" _in_ _input || "recall" _in_ _input || "recognize" _in_ _input || "memory" _in_ _input || "memories" _in_ _input
+	{
+		"%(base)%(focus)\b[2]I've heard that the mind can be its own worst enemy, at times... It can make a person obsess over a single detail, a single moment, on loop... Or, it can take them from you. Leave you with no idea that parts of yourself are missing... \i[44] I can't say that I really know what to do with that knowledge. Or if it matters. \w8\w8\n\nReally, another thing out of our control isn't too surprising. It's hard to be bothered by it. "
+	}
+	elseif "hate" _in_ _input || "loathe" _in_ _input || "detest" _in_ _input || "despise" _in_ _input || "dislike" _in_ _input || "abhor" _in_ _input || "don't like" _in_ _input || "dont like" _in_ _input
+	{
+		"%(base)\_w[1]\i[1000]\i[40]... \i[44]%(default)\w8\w8I try not to hold onto negative feelings too tightly. \i[45]Not that I would judge you for it. \w8\w8\i[44]It's just too tiring for me. I don't need to weigh myself down more. "
+	}
+	elseif "dead" _in_ _input || "deceased" _in_ _input || "spirit" _in_ _input || "spectre" _in_ _input ||"phantom" _in_ _input || "ghost" _in_ _input || "ukagaka" _in_ _input
+	{
+		"%(base)%(focus)I only know how to exist as I am. Whatever that means for me, I couldn't say. \w8\w8\i[44]Likewise, whatever you feel like you might be, I can only trust your word. "
+	}
+	elseif "heaven" _in_ _input || "hell" _in_ _input || "purgatory" _in_ _input || "underworld" _in_ _input || "limbo" _in_ _input || "perdition" _in_ _input
+	{
+		"%(base)\_w[1]\i[1000]\i[40]... \w8\w8\i[44]I wonder. "
+	}
+	else
+	{
+		"%(base)\_w[1]\i[1000]\i[40]... \w8\w8\i[44]\w8\w8"
+	}
+}
+
+OnInTheElements
+{
+	chats++
+	"%(base)\b[2]%(default)Just because the storms here are more... \w8\w8metaphysical... than normal, doesn't mean we shouldn't be able to get out of the rain. \n\nMaybe I don't always want to feel glee, or itchiness, or suspicion pitter-pattering against my head. "
+}
+
+OnFeelHeartbeat
+{
+	chats++
+	"%(base)%(default)I dream of birds. \i[200]Songbirds... \i[100] What it would be like to hold one in my hands. Something small. Something trying so hard. "
+}
+
+OnFiveNotFour
+{
+	chats++
+	"%(base)%(default)No. I didn't miscount. I \_a[OnForgotBody]forgot\_a it was there. I couldn't feel it. "
+}
+
+OnFlyingSnake
+{
+	chats++
+	"%(base)%(default)I don't know where it was going, but it seemed to be in a hurry. I think it might have been \_a[OnScaredSnake]scared off\_a by something. "
+}
+
+OnForgotBody
+{
+	chats++
+	"%(base)\i[45]%(focus)\b[2]I used to spend much of my time thinking about my body. \i[44]Obsession, you could call it. \i[45]But, even if you don't, it wasn't good for me. I try not to do it anymore. I still catch myself counting sometimes. \w8\w8\n\n\i[44]The longer I keep myself from thinking about it, the easier it is to disconnect. Not that that's my intention. It just happens. \w8\w8\n\nWhen I forget, I can't feel it anymore. When I can't feel it, it's like it doesn't exist. So, I don't count it... until I remember. "
+}
+
+OnFourNotFive
+{
+	chats++
+	"%(base)\_w[1]\i[1000]\i[45]... \i[100]\_a[OnFiveNotFour]Five\_a. \w8\w8\i[44]"
+}
+
+OnNormalDawn
+{
+	chats++
+	"%(base)%(default)Oh, I know from the way the clouds are moving. They see the dawn first, so if it's synchronizing with anything, you'll see it in the clouds. "
+}
+
+OnRealFlyingSnake
+{
+	chats++
+	"%(base)\b[2]%(default)I've never seen them before, but I learned about them. All ribs and skin and daredevil attitudes. \n\nAt this point, they seem strange compared to the ones here. The occasional extra set of eyes or limbs would make them more respectable. "
+}
+
+OnRipeThoughts
+{
+	chats++
+	"\b[2]%(base)%(default)It's not such a strange notion. Lots of things need some time to grow into their own. \_a[OnThoughtsAndFeelings]Thoughts and feelings\_a can become so intertwined that they need the chance to separate from one another before you can do anything constructive with them. \w8\w8\n\nThe whole of you cannot grow if you don't give permission for the parts to grow as well... Of course, if you don't care about improving yourself, it doesn't really matter what you do. "
+}
+
+OnRubbedRaw
+{
+	chats++
+	"%(base)%(default)Just because I currently \_a[OnDontHaveSkin]don't have skin\_a, that doesn't mean my skin \_a[OnCantHurt]can't hurt\_a. "
+}
+
+OnScaredSnake
+{
+	chats++
+	"%(base)\b[2]%(default)I'm not sure. The mountains, maybe. I think I heard one of them stirring, not too long ago. \w8\w8\n\nYou'd expect to see more of them if that was the case, though... The snakes, not the mountains. "
+}
+
+OnSeeds
+{
+	chats++
+	"%(base)\b[2]%(default)The prickly kind, mostly. \n\nStepping on them doesn't hurt, exactly, but it does make you feel something. It can be pretty startling, depending on what emotion they're growing. "
+}
+
+OnSeedsMoving
+{
+	chats++
+	"%(base)%(default)If I had to guess, \i[45]I'd say they're probably doing it the old fashioned way. Decide they want to be somewhere else, put in a little work, and \_a[OnSeedTumbling]start tumbling\_a. \w8\w8\i[44]"
+}
+
+OnSeedTumbling
+{
+	chats++
+	"%(base)%(shy)Well, they don't exactly have legs, do they? "
+}
+
+OnShadows
+{
+	chats++
+	"%(base)\b[2]%(shy)They're sort of cute, actually. They follow you around, sure, but they're also distracted easily. \n\nIt's fun watching them chase the creatures around, trying to decide which one to stick to. "
+}
+
+OnSmallAnimals
+{
+	chats++
+	"%(base)%(default)It's the other way around for large somethings. Sometimes... \i[45]I think I must be incredibly big. \i[44]Otherwise I would feel mine. "
+}
+
+OnStaticAnimals
+{
+	chats++
+	"%(base)\b[2]%(default)Theoretically, I'm sure most things with fur can still build up a static charge... \w8In practice? I think I saw a deer once that was mostly made of lightning and enthusiasm. \w8\w8\w8\w8\n\nThe lightning part would probably be rather staticky. "
+}
+
+OnThoughts
+{
+	chats++
+	"%(base)\_w[1]\i[1000]\i[45]\![open,input,OnInputThoughts,-1]"
+}
+
+OnThoughtsAndFeelings
+{
+	chats++
+	"%(base)\_w[1]\i[100]\i[45]When mine are intertwined, I set the thoughts aside and let the feelings pass as they see fit. \w8\w8\i[44]Feelings don't do well when confined. "
+}
+
+OnTuckItWhere
+{
+	chats++
+	"%(base)%(default)I have a tin box set aside for anything I want to keep around for a while. I still let them go, eventually. Thoughts need to be allowed to run their course. "
+}
+
+OnUserInputCancel
+{
+	"%(base)\_w[1]\i[1000]\i[44]"
+}
+
+OnWhereIsHere
+{
+	chats++
+	"%(base)\_w[1]\i[1000]\i[41]...? \i[100]Sorry, I \_a[OnCantOrWont]can't say\_a. Do you have any \_a[OnThoughts]thoughts\_a?"
+}

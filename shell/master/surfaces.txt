@@ -1,0 +1,454 @@
+descript
+{
+	version,1
+}
+
+//—————————————————————————————— Sakura surfaces ——————————————————————————————
+
+surface0
+{
+	//Example code for blink animation - uncomment if you want it
+	//animation0.interval,random,4
+	//animation0.pattern1,overlay,101,0,0,0
+	//animation0.pattern2,overlay,102,100,0,0
+	//animation0.pattern3,overlay,-1,50,0,0
+}
+
+surface1
+{
+	animation0.interval,runonce
+	animation0.pattern0,overlay,1000,0,0,0
+	
+	animation1.interval,never
+	animation1.pattern0,stop,0
+	animation1.pattern1,overlay,0,0,0,0
+	animation1.pattern2,overlay,100,0,0,0
+	animation1.pattern3,overlay,101,100,0,0
+	animation1.pattern4,overlay,102,100,0,0
+	animation1.pattern5,overlay,103,100,0,0
+	animation1.pattern6,overlay,104,100,0,0
+	animation1.pattern7,overlay,105,100,0,0
+	animation1.pattern8,overlay,106,100,0,0
+	animation1.pattern9,overlay,107,100,0,0
+	animation1.pattern10,overlay,108,100,0,0
+	animation1.pattern11,overlay,109,100,0,0
+	animation1.pattern12,overlay,110,100,0,0
+	animation1.pattern13,overlay,111,100,0,0
+	animation1.pattern14,overlay,112,100,0,0
+	animation1.pattern15,overlay,113,100,0,0
+	animation1.pattern16,overlay,114,100,0,0
+	animation1.pattern17,overlay,115,100,0,0
+	animation1.pattern18,overlay,116,100,0,0
+	animation1.pattern19,overlay,-1,100,0,0
+	animation1.pattern20,start,0
+	
+	animation150.interval,never
+	animation150.pattern0,overlay,150,0,0,0
+	animation150.pattern1,overlay,151,140,0,0
+	animation150.pattern2,overlay,152,140,0,0
+	animation150.pattern3,overlay,153,140,0,0
+	animation150.pattern4,overlay,154,140,0,0
+	animation150.pattern5,overlay,155,140,0,0
+	animation150.pattern6,overlay,156,140,0,0
+	animation150.pattern7,overlay,157,140,0,0
+	animation150.pattern8,overlay,158,140,0,0
+	animation150.pattern9,overlay,159,140,0,0
+	animation150.pattern10,overlay,160,140,0,0
+	animation150.pattern11,overlay,161,140,0,0
+	animation150.pattern12,overlay,162,140,0,0
+	animation150.pattern13,overlay,163,140,0,0
+	animation150.pattern14,overlay,164,140,0,0
+	animation150.pattern15,overlay,165,140,0,0
+	animation150.pattern16,overlay,166,140,0,0
+	animation150.pattern17,overlay,167,140,0,0
+	animation150.pattern18,overlay,168,140,0,0
+	animation150.pattern19,overlay,10,140,0,0
+	animation150.pattern20,overlay,-1,140,0,0
+	animation150.pattern21,start,100
+	
+	animation151.interval,never
+	animation151.pattern0,overlay,170,0,0,0
+	animation151.pattern1,overlay,171,140,0,0
+	animation151.pattern2,overlay,172,140,0,0
+	animation151.pattern3,overlay,173,140,0,0
+	animation151.pattern4,overlay,174,140,0,0
+	animation151.pattern5,overlay,175,140,0,0
+	animation151.pattern6,overlay,176,140,0,0
+	animation151.pattern7,overlay,177,140,0,0
+	animation151.pattern8,overlay,178,140,0,0
+	animation151.pattern9,overlay,179,140,0,0
+	animation151.pattern10,overlay,180,140,0,0
+	animation151.pattern11,overlay,181,140,0,0
+	animation151.pattern12,overlay,182,140,0,0
+	animation151.pattern13,overlay,183,140,0,0
+	animation151.pattern14,overlay,184,140,0,0
+	animation151.pattern15,overlay,185,140,0,0
+	animation151.pattern16,overlay,186,140,0,0
+	animation151.pattern17,overlay,187,140,0,0
+	animation151.pattern18,overlay,188,140,0,0
+	animation151.pattern19,overlay,10,140,0,0
+	animation151.pattern20,overlay,-1,140,0,0
+	animation151.pattern21,start,1000
+}
+
+surface2
+{
+	animation0.interval,runonce
+	animation0.pattern0,overlay,2000,0,0,0
+	
+	animation1.interval,never
+	animation1.pattern0,parallelstop,(0,1001)
+	animation1.pattern1,overlay,0,0,0,0
+	animation1.pattern2,overlay,200,0,0,0
+	animation1.pattern3,overlay,201,100,0,0
+	animation1.pattern4,overlay,202,100,0,0
+	animation1.pattern5,overlay,203,100,0,0
+	animation1.pattern6,overlay,204,100,0,0
+	animation1.pattern7,overlay,205,100,0,0
+	animation1.pattern8,overlay,206,100,0,0
+	animation1.pattern9,overlay,207,100,0,0
+	animation1.pattern10,overlay,208,100,0,0
+	animation1.pattern11,overlay,209,100,0,0
+	animation1.pattern12,overlay,210,100,0,0
+	animation1.pattern13,overlay,211,100,0,0
+	animation1.pattern14,overlay,212,100,0,0
+	animation1.pattern15,overlay,213,100,0,0
+	animation1.pattern16,overlay,214,100,0,0
+	animation1.pattern17,overlay,215,100,0,0
+	animation1.pattern18,overlay,216,100,0,0
+	animation1.pattern19,overlay,-1,100,0,0
+	animation1.pattern20,start,0
+	
+	animation1001.interval,never
+	animation1001.pattern0,stop,0
+	animation1001.pattern1,overlay,200,0,0,0
+	
+	animation300.interval,never
+	animation300.pattern0,overlay,300,0,0,0
+	animation300.pattern1,overlay,301,200,0,0
+	animation300.pattern2,overlay,302,200,0,0
+	animation300.pattern3,overlay,303,200,0,0
+	animation300.pattern4,overlay,304,200,0,0
+	animation300.pattern5,overlay,305,200,0,0
+	animation300.pattern6,overlay,306,200,0,0
+	animation300.pattern7,overlay,307,200,0,0
+	animation300.pattern8,overlay,308,200,0,0
+	animation300.pattern9,overlay,309,200,0,0
+	animation300.pattern10,overlay,310,200,0,0
+	animation300.pattern11,overlay,311,200,0,0
+	animation300.pattern12,overlay,312,200,0,0
+	animation300.pattern13,overlay,313,200,0,0
+	animation300.pattern14,overlay,314,200,0,0
+	animation300.pattern15,overlay,315,200,0,0
+	animation300.pattern16,overlay,316,200,0,0
+	animation300.pattern17,overlay,317,200,0,0
+	animation300.pattern18,overlay,318,200,0,0
+	animation300.pattern19,overlay,-1,200,0,0
+	animation300.pattern20,start,31
+	
+	animation30.interval,never
+	animation30.pattern0,parallelstop,(31,32,33,36,37,40,41,42,43)
+	animation30.pattern1,overlay,30,0,0,0
+	animation30.pattern2,overlay,-1,1000-8000,0,0
+	animation30.pattern3,start,32
+	
+	animation31.interval,never
+	animation31.pattern0,parallelstop,(30,32,33,36,37,40,41,42,43)
+	animation31.pattern1,overlay,31,0,0,0
+	animation31.pattern2,overlay,-1,1000-8000,0,0
+	animation31.pattern3,start,33
+	
+	animation32.interval,random,10
+	animation32.pattern0,parallelstop,(31,33,36,37,40,41,42,43)
+	animation32.pattern1,overlay,32,0,0,0
+	animation32.pattern2,overlay,50,100,0,0
+	animation32.pattern3,overlay,32,100,0,0
+	animation32.pattern4,overlay,-1,100,0,0
+	animation32.pattern5,start,36
+	
+	animation33.interval,random,10
+	animation33.pattern0,parallelstop,(30,32,36,37,40,41,42,43)
+	animation33.pattern1,overlay,33,0,0,0
+	animation33.pattern2,overlay,50,100,0,0
+	animation33.pattern3,overlay,33,100,0,0
+	animation33.pattern4,overlay,-1,100,0,0
+	animation33.pattern5,start,37
+	
+	animation34.interval,never
+	animation34.pattern0,parallelstop,(30,31,32,33,35,36,37)
+	animation34.pattern1,overlay,32,0,0,0
+	animation34.pattern2,overlay,50,100,0,0
+	animation34.pattern3,overlay,33,100,0,0
+	animation34.pattern4,overlay,-1,100,0,0
+	animation34.pattern5,start,31
+	animation34.option,exclusive,(31,21)
+	
+	animation35.interval,never
+	animation35.pattern0,parallelstop,(30,31,31,32,33,34,36,37)
+	animation35.pattern1,overlay,33,0,0,0
+	animation35.pattern2,overlay,50,100,0,0
+	animation35.pattern3,overlay,32,100,0,0
+	animation35.pattern4,overlay,-1,100,0,0
+	animation35.pattern5,start,30
+	animation35.option,exclusive,(30,21)
+	
+	animation36.interval,never
+	animation36.pattern0,parallelstop,(30,31,33,34,35,37,40,41,42,43)
+	animation36.pattern1,overlay,30,0,0,0
+	
+	animation37.interval,never
+	animation37.pattern0,parallelstop,(30,31,32,34,35,36,40,41,42,43)
+	animation37.pattern1,overlay,31,0,0,0
+	
+	animation400.interval,never
+	animation400.pattern0,stop,31
+	animation400.pattern1,overlay,400,0,0,0
+	animation400.pattern2,overlay,401,200,0,0
+	animation400.pattern3,overlay,402,200,0,0
+	animation400.pattern4,overlay,403,200,0,0
+	animation400.pattern5,overlay,404,200,0,0
+	animation400.pattern6,overlay,405,200,0,0
+	animation400.pattern7,overlay,406,200,0,0
+	animation400.pattern8,overlay,407,200,0,0
+	animation400.pattern9,overlay,408,200,0,0
+	animation400.pattern10,overlay,409,200,0,0
+	animation400.pattern11,overlay,410,200,0,0
+	animation400.pattern12,overlay,411,200,0,0
+	animation400.pattern13,overlay,412,200,0,0
+	animation400.pattern14,overlay,413,200,0,0
+	animation400.pattern15,overlay,414,200,0,0
+	animation400.pattern16,overlay,415,200,0,0
+	animation400.pattern17,overlay,416,200,0,0
+	animation400.pattern18,overlay,417,200,0,0
+	animation400.pattern19,overlay,418,200,0,0
+	animation400.pattern20,overlay,-1,200,0,0
+	animation400.pattern21,start,41
+	
+	animation40.interval,never
+	animation40.pattern0,parallelstop,(41,42,43,46,47,30,31,32,33)
+	animation40.pattern1,overlay,40,0,0,0
+	animation40.pattern2,overlay,-1,1000-8000,0,0
+	animation40.pattern3,start,42
+	
+	animation41.interval,never
+	animation41.pattern0,parallelstop,(40,42,43,46,47,30,31,32,33)
+	animation41.pattern1,overlay,41,0,0,0
+	animation41.pattern2,overlay,-1,1000-8000,0,0
+	animation41.pattern3,start,43
+	
+	animation42.interval,random,10
+	animation42.pattern0,parallelstop,(41,43,46,47,30,31,32,33)
+	animation42.pattern1,overlay,42,0,0,0
+	animation42.pattern2,overlay,50,100,0,0
+	animation42.pattern4,overlay,42,100,0,0
+	animation42.pattern5,overlay,-1,100,0,0
+	animation42.pattern6,start,46
+	
+	animation43.interval,random,10
+	animation43.pattern0,parallelstop,(40,42,46,47,30,31,32,33)
+	animation43.pattern1,overlay,43,0,0,0
+	animation43.pattern2,overlay,50,100,0,0
+	animation43.pattern4,overlay,43,100,0,0
+	animation43.pattern5,overlay,-1,100,0,0
+	animation43.pattern6,start,47
+	
+	animation44.interval,never
+	animation44.pattern0,parallelstop,(40,41,42,43,45,46,47)
+	animation44.pattern1,overlay,42,0,0,0
+	animation44.pattern2,overlay,50,100,0,0
+	animation44.pattern4,overlay,43,100,0,0
+	animation44.pattern5,overlay,-1,100,0,0
+	animation44.pattern6,start,41
+	animation44.option,exclusive,(41,21)
+	
+	animation45.interval,never
+	animation45.pattern0,parallelstop,(40,41,41,42,43,44,46,47)
+	animation45.pattern1,overlay,43,0,0,0
+	animation45.pattern2,overlay,50,100,0,0
+	animation45.pattern4,overlay,42,100,0,0
+	animation45.pattern5,overlay,-1,100,0,0
+	animation45.pattern6,start,40
+	animation45.option,exclusive,(40,21)
+	
+	animation46.interval,never
+	animation46.pattern0,parallelstop,(40,41,43,44,45,47,30,31,32,33)
+	animation46.pattern1,overlay,40,0,0,0
+	
+	animation47.interval,never
+	animation47.pattern0,parallelstop,(40,41,42,44,45,46,30,31,32,33)
+	animation47.pattern1,overlay,41,0,0,0
+	
+	animation299.interval,runonce
+	animation299.pattern0,parallelstop,(30,31,32,33,36,37,40,41,42,43,46,47)
+}
+
+surface9
+{
+	//Just here to stop the notice...
+}
+
+surface.append1-2
+{
+	animation1000.interval,never
+	animation1000.pattern0,parallelstop,(2000,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21)
+	animation1000.pattern1,overlay,10,0,0,0
+	
+	animation100.interval,never
+	animation100.pattern0,parallelstop,(1000,2000,12,13,14,15,16,17,18,19,20,21)
+	animation100.pattern1,start,2
+	
+	animation2000.interval,never
+	animation2000.pattern0,parallelstop,(1000,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21)
+	animation2000.pattern1,overlay,14,0,0,0
+	
+	animation200.interval,never
+	animation200.pattern0,parallelstop,(1000,2000,2,3,4,5,6,7,8,9,10,11)
+	animation200.pattern1,start,12
+	
+	animation2.interval,talk,6
+	animation2.pattern0,alternativestart,(3,4,5,6,7,8,9,10,11)
+
+	animation3.interval,never
+	animation3.pattern0,stop,1000
+	animation3.pattern1,overlay,11,0,0,0
+	animation3.pattern2,overlay,11,100,0,0
+	animation3.pattern3,start,1000
+	animation3.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+
+	animation4.interval,never
+	animation4.pattern0,stop,1000
+	animation4.pattern1,overlay,12,0,0,0
+	animation4.pattern2,overlay,12,100,0,0
+	animation4.pattern3,start,1000
+	animation4.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+
+	animation5.interval,never
+	animation5.pattern0,stop,1000
+	animation5.pattern1,overlay,13,0,0,0
+	animation5.pattern2,overlay,13,100,0,0
+	animation5.pattern3,start,1000
+	animation5.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation6.interval,never
+	animation6.pattern0,stop,1000
+	animation6.pattern1,overlay,11,0,0,0
+	animation6.pattern2,overlay,12,100,0,0
+	animation6.pattern3,overlay,12,100,0,0
+	animation6.pattern4,start,1000
+	animation6.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation7.interval,never
+	animation7.pattern0,stop,1000
+	animation7.pattern1,overlay,11,0,0,0
+	animation7.pattern2,overlay,13,100,0,0
+	animation7.pattern3,overlay,13,100,0,0
+	animation7.pattern4,start,1000
+	animation7.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation8.interval,never
+	animation8.pattern0,stop,1000
+	animation8.pattern1,overlay,12,0,0,0
+	animation8.pattern2,overlay,11,100,0,0
+	animation8.pattern3,overlay,11,100,0,0
+	animation8.pattern4,start,1000
+	animation8.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation9.interval,never
+	animation9.pattern0,stop,1000
+	animation9.pattern1,overlay,12,0,0,0
+	animation9.pattern2,overlay,13,100,0,0
+	animation9.pattern3,overlay,13,100,0,0
+	animation9.pattern4,start,1000
+	animation9.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation10.interval,never
+	animation10.pattern0,stop,1000
+	animation10.pattern1,overlay,13,0,0,0
+	animation10.pattern2,overlay,11,100,0,0
+	animation10.pattern3,overlay,11,100,0,0
+	animation10.pattern4,start,1000
+	animation10.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation11.interval,never
+	animation11.pattern0,stop,1000
+	animation11.pattern1,overlay,13,0,0,0
+	animation11.pattern2,overlay,12,100,0,0
+	animation11.pattern3,overlay,12,100,0,0
+	animation11.pattern4,start,1000
+	animation11.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation12.interval,talk,6
+	animation12.pattern0,alternativestart,(13,14,15,16,17,18,19,20,21)
+
+	animation13.interval,never
+	animation13.pattern0,stop,2000
+	animation13.pattern1,overlay,15,0,0,0
+	animation13.pattern2,overlay,15,100,0,0
+	animation13.pattern3,start,2000
+	animation13.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+
+	animation14.interval,never
+	animation14.pattern0,stop,2000
+	animation14.pattern1,overlay,16,0,0,0
+	animation14.pattern2,overlay,16,100,0,0
+	animation14.pattern3,start,2000
+	animation14.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+
+	animation15.interval,never
+	animation15.pattern0,stop,2000
+	animation15.pattern1,overlay,17,0,0,0
+	animation15.pattern2,overlay,17,100,0,0
+	animation15.pattern3,start,2000
+	animation15.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation16.interval,never
+	animation16.pattern0,stop,2000
+	animation16.pattern1,overlay,15,0,0,0
+	animation16.pattern2,overlay,16,100,0,0
+	animation16.pattern3,overlay,16,100,0,0
+	animation16.pattern4,start,2000
+	animation16.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation17.interval,never
+	animation17.pattern0,stop,2000
+	animation17.pattern1,overlay,15,0,0,0
+	animation17.pattern2,overlay,17,100,0,0
+	animation17.pattern3,overlay,17,100,0,0
+	animation17.pattern4,start,2000
+	animation17.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation18.interval,never
+	animation18.pattern0,stop,2000
+	animation18.pattern1,overlay,16,0,0,0
+	animation18.pattern2,overlay,15,100,0,0
+	animation18.pattern3,overlay,15,100,0,0
+	animation18.pattern4,start,2000
+	animation18.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation19.interval,never
+	animation19.pattern0,stop,2000
+	animation19.pattern1,overlay,16,0,0,0
+	animation19.pattern2,overlay,17,100,0,0
+	animation19.pattern3,overlay,17,100,0,0
+	animation19.pattern4,start,2000
+	animation19.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation20.interval,never
+	animation20.pattern0,stop,2000
+	animation20.pattern1,overlay,17,0,0,0
+	animation20.pattern2,overlay,15,100,0,0
+	animation20.pattern3,overlay,15,100,0,0
+	animation20.pattern4,start,2000
+	animation20.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation21.interval,never
+	animation21.pattern0,stop,2000
+	animation21.pattern1,overlay,17,0,0,0
+	animation21.pattern2,overlay,16,100,0,0
+	animation21.pattern3,overlay,16,100,0,0
+	animation21.pattern4,start,2000
+	animation21.option,exclusive,(2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+	
+	animation199.interval,runonce
+	animation199.pattern0,parallelstop,(1000,100,2000,200,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+}
